@@ -1,0 +1,47 @@
+@import "./../../Colours/Dark/main";
+
+.nav-bar-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $primary;
+  color: $text-primary;
+  max-height: 100vh;
+  overflow: auto;
+
+  .nav-bar-header-container {
+    text-align: center;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    border-bottom: 2px solid $hover-primary;
+  }
+
+  .nav-bar-links-container {
+    display: flex;
+    flex-direction: column;
+
+    .nav-bar-button {
+      display: flex;
+      justify-content: left;
+      padding: 1rem 2rem;
+      color: $text-primary;
+      cursor: pointer;
+
+      .nav-bar-button-text {
+        display: flex;
+        justify-content: left;
+
+        .nav-bar-icon {
+          margin-right: 0.3rem;
+          font-size: 1.5rem;
+        }
+      }
+
+      &:hover {
+        background-color: $hover-primary;
+      }
+    }
+  }
+}

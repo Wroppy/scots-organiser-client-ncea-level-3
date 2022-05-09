@@ -1,0 +1,11 @@
+body, html{
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+
+#root{
+  @extend body;
+  display: flex;
+  flex-direction: column;
+}
