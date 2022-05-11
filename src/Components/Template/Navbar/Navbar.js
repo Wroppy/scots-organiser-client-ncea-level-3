@@ -6,7 +6,7 @@ function Navbar(props) {
 
     return <div className="nav-bar-container">
         <div className="nav-bar-header-container">
-            Scots Hub
+            Scots Core
         </div>
         <div className="nav-bar-links-container">
             {urls.map((value, index) => {

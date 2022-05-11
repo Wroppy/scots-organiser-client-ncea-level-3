@@ -27,7 +27,7 @@ function Header(props) {
                     </Button>
                 </div>
                 <div className="content-header-title">
-                    Scots Hub
+                    Scots Core
                 </div>
             </div>
             <div className="content-header-user-container">
