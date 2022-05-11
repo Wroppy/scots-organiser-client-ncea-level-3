@@ -14,7 +14,8 @@ function Header(props) {
     }
 
     let {width, height} = useWindowDimensions();
-    let heading = props.heading;
+    const heading = props.heading;
+    const showNav = props.showNav;
 
     const [mobileNavbarOpen, setMobileNavbarOpen] = useState(false);
 
@@ -22,24 +23,25 @@ function Header(props) {
         <div className="content-header-container">
             <div className="content-header-mobile-container">
                 <div className="content-header-mobile-menu">
-                    <Button color="primary" className="nav-bar-open-button" onClick={changeMobileNavbar}>
+                    {showNav && <Button color="primary" className="nav-bar-open-button" onClick={changeMobileNavbar}>
                         <DensityMedium/>
-                    </Button>
+                    </Button>}
                 </div>
                 <div className="content-header-title">
                     Scots Core
                 </div>
             </div>
             <div className="content-header-user-container">
-            <div className="header-text">
-                {heading}
-            </div>
-                <Button className="header-button">
+                <div className="header-text">
+                    {heading}
+                </div>
+                {showNav && <Button className="header-button">
                     <PersonIcon/>
-                </Button>
+                </Button>}
             </div>
         </div>
-        {width <= breakPoint && <MobileNavbar urls={props.urls} style={mobileNavbarOpen ? {display: "flex"} : {display: "none"}}/>}
+        {width <= breakPoint &&
+            <MobileNavbar urls={props.urls} style={mobileNavbarOpen ? {display: "flex"} : {display: "none"}}/>}
     </div>)
 
 }

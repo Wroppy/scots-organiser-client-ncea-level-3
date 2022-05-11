@@ -17,12 +17,14 @@ let urls = [
 
 function Template() {
     let [currentHeader, setCurrentHeader] = useState("Template");
+    const [showNav, setShowNav] = useState(true)
+
 
     return <div className="container">
-        <Navbar urls={urls}/>
+        {showNav && <Navbar urls={urls}/>}
         <div className="content-container">
-            <Header heading={currentHeader} urls={urls}/>
-            <Outlet/>
+            <Header heading={currentHeader} urls={urls} showNav={showNav}/>
+            <Outlet setShowNav={setShowNav}/>
         </div>
     </div>
 }
