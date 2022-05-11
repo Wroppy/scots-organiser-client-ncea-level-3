@@ -12,7 +12,25 @@ $breakpoint-small: 800px;
     flex-basis: auto !important;
   }
 
+  .header-text{
+    padding-left: 0.25rem !important;
+    font-size: 0.8rem !important;
+  }
+
   .content-header-mobile-container {
     display: flex !important;
+
+    .nav-bar-open-button {
+      padding: 0.5rem 0 !important;
+      width: 1.5rem !important;
+    }
+  }
+
+  .content-header-title{
+    padding: 0 0.2rem !important;
+  }
+
+  .content-header-container{
+    font-size: 0.8rem;
   }
 }

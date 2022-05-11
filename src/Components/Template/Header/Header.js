@@ -16,13 +16,13 @@ function Header(props) {
     let {width, height} = useWindowDimensions();
     let heading = props.heading;
 
-    const [mobileNavbarOpen, setMobileNavbarOpen] = useState(true);
+    const [mobileNavbarOpen, setMobileNavbarOpen] = useState(false);
 
     return (<div className="content-header">
         <div className="content-header-container">
             <div className="content-header-mobile-container">
                 <div className="content-header-mobile-menu">
-                    <Button color="primary" onClick={changeMobileNavbar}>
+                    <Button color="primary" className="nav-bar-open-button" onClick={changeMobileNavbar}>
                         <DensityMedium/>
                     </Button>
                 </div>
@@ -31,9 +31,9 @@ function Header(props) {
                 </div>
             </div>
             <div className="content-header-user-container">
-            <span className="header-text">
+            <div className="header-text">
                 {heading}
-            </span>
+            </div>
                 <Button className="header-button">
                     <PersonIcon/>
                 </Button>

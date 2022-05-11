@@ -1,6 +1,7 @@
 @import "./../../Colours/Dark/main";
 
 .nav-bar-container {
+  user-select: none;
   display: flex;
   flex-direction: column;
   background-color: $primary;
