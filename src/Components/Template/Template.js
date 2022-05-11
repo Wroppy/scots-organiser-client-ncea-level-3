@@ -1,10 +1,10 @@
 import {Outlet} from 'react-router-dom';
-import Button from '@mui/material/Button';
 import "./Template.scss";
 import {useState} from 'react';
-import PersonIcon from '@mui/icons-material/Person';
 import Navbar from './Navbar/Navbar';
 import "./../../resources/icons-span/style.css";
+import Header from './Header/Header';
+import "./TemplateMobile.scss";
 
 let urls = [
     {"text": "Dashboard", url: "", icon: "home"},
@@ -16,19 +16,12 @@ let urls = [
 ]
 
 function Template() {
-    let [currentHeader, setCurrentHeader] = useState("");
+    let [currentHeader, setCurrentHeader] = useState("Template");
 
     return <div className="container">
         <Navbar urls={urls}/>
         <div className="content-container">
-            <div className="content-header-container">
-                <span className="header-text">
-                    {currentHeader}
-                </span>
-                <Button className="header-button">
-                    <PersonIcon/>
-                </Button>
-            </div>
+            <Header heading={currentHeader} urls={urls}/>
             <Outlet/>
         </div>
     </div>

@@ -1,0 +1,26 @@
+@import "./../../Colours/Dark/main";
+
+// Mobile Navbar
+
+.mobile-navbar-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $background-darker;
+  border-bottom: 3px solid $hover-tertiary;
+
+
+  .mobile-nav-bar-links-container {
+    display: flex;
+    flex-direction: column;
+
+    .nav-bar-button {
+      padding: 0.5rem 0;
+      .nav-bar-button-text{
+        width: 100%;
+        padding: 0 2rem;
+      }
+      text-align: left;
+    }
+  }
+
+}

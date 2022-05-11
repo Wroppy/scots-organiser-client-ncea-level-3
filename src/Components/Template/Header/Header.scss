@@ -1,0 +1,40 @@
+@import "./../../Colours/Dark/main";
+
+.content-header-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: $background-darker;
+  border-bottom: 3px solid $hover-tertiary;
+  user-select: none;
+
+  .content-header-user-container {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+
+    .header-button {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $text-primary;
+    }
+
+    .header-text {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  .content-header-mobile-container {
+    display: none;
+
+    .content-header-title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $primary;
+      padding: 0 1rem;
+    }
+  }
+}

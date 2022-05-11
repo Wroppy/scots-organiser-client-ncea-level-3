@@ -1,0 +1,18 @@
+// This scss file is used for the template for when the width of the website is less than 800px
+
+$breakpoint-small: 800px;
+
+@media screen and (max-width: $breakpoint-small) {
+  .nav-bar-container {
+    display: none;
+  }
+
+  .content-header-user-container {
+    justify-content: end !important;
+    flex-basis: auto !important;
+  }
+
+  .content-header-mobile-container {
+    display: flex !important;
+  }
+}

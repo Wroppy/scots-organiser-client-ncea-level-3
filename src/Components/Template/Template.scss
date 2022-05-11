@@ -12,25 +12,5 @@
     color: $text-primary;
     background-color: $background-primary;
 
-    .content-header-container {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 3px solid $hover-primary;
-
-      .header-button {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: $text-primary;
-      }
-
-      .header-text {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-      }
-    }
-
-
   }
 }
