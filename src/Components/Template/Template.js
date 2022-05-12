@@ -10,7 +10,6 @@ import "./TemplateMobile.scss";
 let urls = [
     {"text": "Dashboard", url: "", icon: "home"},
     {"text": "Tasks", url: "", icon: "tasks"},
-    {"text": "Homework", url: "", icon: "homework"},
     {"text": "Assignments", url: "", icon: "assignments"},
     {"text": "Timetable", url: "", icon: "calendar"},
     {"text": "Goals", url: "", icon: "goals"},
