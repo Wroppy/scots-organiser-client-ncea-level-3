@@ -1,8 +1,13 @@
 .register-page-container{
+  // Fills rest of content page
   flex-grow: 1;
+
+  // Center content
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  // Margin for visual effect
   margin-bottom: 4rem;
 }

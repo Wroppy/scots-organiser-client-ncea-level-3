@@ -6,6 +6,7 @@ import "./../../resources/icons-span/style.css";
 import Header from './Header/Header';
 import "./TemplateMobile.scss";
 
+// Urls for the different pages
 let urls = [
     {"text": "Dashboard", url: "", icon: "home"},
     {"text": "Tasks", url: "", icon: "tasks"},

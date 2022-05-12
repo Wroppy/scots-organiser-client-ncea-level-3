@@ -4,8 +4,12 @@
 .user-form-container {
   display: flex;
   flex-direction: column;
+
+  // Width of 450 or smaller
   max-width: 450px;
   width: 100%;
+
+  // Centers
   margin: auto;
 
   .user-form-header {

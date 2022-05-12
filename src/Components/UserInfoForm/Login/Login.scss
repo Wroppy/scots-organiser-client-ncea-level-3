@@ -1,8 +1,13 @@
 .login-page-container{
+  // Fills up the rest of the page
   flex-grow: 1;
+
+  // Centers the login form
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  // Margins for visual appeal
   margin-bottom: 4rem;
 }

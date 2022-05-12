@@ -1,3 +1,5 @@
+// Login page for the website
+
 import UserForm from './../UserForm/UserForm';
 import "./Login.scss";
 

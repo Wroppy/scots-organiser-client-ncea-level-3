@@ -1,6 +1,9 @@
 import UserForm from './../UserForm/UserForm';
 import "./Register.scss";
 
+// Component: Register
+// Description: Register form
+
 function Register(props) {
     props.setCurrentHeader("Register");
     return <div className="register-page-container">

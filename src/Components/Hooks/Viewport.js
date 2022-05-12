@@ -1,3 +1,4 @@
+// Copied from Stack Overflow
 //https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
 
 import {useState, useEffect} from 'react';

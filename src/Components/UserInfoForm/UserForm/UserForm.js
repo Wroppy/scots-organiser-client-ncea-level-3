@@ -7,33 +7,49 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {IconButton, InputAdornment} from "@mui/material";
 
 function UserForm(props) {
+    // Hooks for the text fields, along with the error messages
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
     const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
-    const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const handleSubmit = props.submit;
-    const heading = props.heading;
 
-    const showNameField = props.showNameField;
+    const [password, setPassword] = useState("");
+    const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+
     const [name, setName] = useState("");
     const [nameErrorMsg, setNameErrorMsg] = useState("");
-    const handleNameChange = (event) => {
-        setName(event.currentTarget.value);
-    }
 
+    // Function for the form submit
+    const handleSubmit = props.submit;
 
+    // Function for the form heading
+    const heading = props.heading;
+
+    // Hook for whether the user wants the password to be shown
+    const [showPassword, setShowPassword] = useState(false);
+
+    // For if the user wants a name field in the form
+    const showNameField = props.showNameField;
+
+    // function for the form onSubmit
     const formSubmit = (e) => {
         e.preventDefault();
+        if (showNameField) {
+            handleSubmit(username, password, name);
+            return;
+        }
         handleSubmit(username, password);
     }
+
+    // Toggles the password visibility
     const passwordShowClicked = () => {
         setShowPassword(!showPassword);
     }
+
+    // Prevent default
     const passwordShowPressDown = (e) => {
         e.preventDefault();
     }
 
+    // Icon for the toggle on and off icon
     const passwordInputAdornment = () => {
         return <IconButton onMouseDown={passwordShowPressDown} onClick={passwordShowClicked} edge="end" aria-label="toggle
                 show password">
@@ -46,11 +62,13 @@ function UserForm(props) {
             {heading}
         </div>
         <div className="user-form-body">
+            {/* Conditional rendering if the name field needs to be on */}
             {showNameField && <TextField required={true} autoComplete="off" className="form-text-field"
                                          error={nameErrorMsg.length > 0} helperText={nameErrorMsg}
                                          variant="outlined"
-                                         label="Name" value={name} onChange={handleNameChange}/>}
-
+                                         label="Name" value={name} onChange={(e) => {
+                setName(e.currentTarget.value);
+            }}/>}
             <TextField required={true} autoComplete="off" className="form-text-field"
                        error={usernameErrorMsg.length > 0} helperText={usernameErrorMsg} varient="outlined"
                        label="Username" value={username}

@@ -1,3 +1,6 @@
+// Dark theme for the material ui components
+// Made using https://bareynol.github.io/mui-theme-creator/
+
 const themeOptions = {
     palette: {
         mode: 'dark',
