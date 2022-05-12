@@ -11,6 +11,8 @@
     flex-grow: 1;
     color: $text-primary;
     background-color: $background-primary;
+    display: flex;
+    flex-direction: column;
 
   }
 }

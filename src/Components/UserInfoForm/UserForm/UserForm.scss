@@ -1,0 +1,29 @@
+@import "./../../Colours/Dark/main";
+
+
+.user-form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  width: 100%;
+  margin: auto;
+
+  .user-form-header {
+    padding: 1rem;
+    background-color: $primary;
+  }
+
+  .user-form-body {
+    padding-top: 1rem;
+
+    .form-text-field {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .user-form-footer {
+    display: flex;
+    justify-content: end;
+  }
+}

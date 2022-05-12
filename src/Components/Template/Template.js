@@ -15,8 +15,8 @@ let urls = [
     {"text": "Goals", url: "", icon: "goals"},
 ]
 
-function Template() {
-    let [currentHeader, setCurrentHeader] = useState("Template");
+function Template(props) {
+    let currentHeader = props.heading;
     const [showNav, setShowNav] = useState(true)
 
 
