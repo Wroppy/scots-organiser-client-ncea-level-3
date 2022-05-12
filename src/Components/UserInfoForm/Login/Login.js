@@ -5,6 +5,9 @@ import "./Login.scss";
 
 function Login(props) {
     props.setCurrentHeader("Login");
+    props.setShowNav(false);
+
+
     return <div className="login-page-container">
         <UserForm formClassName="login-form-container" heading="Login" showNameField={false}/>
     </div>
