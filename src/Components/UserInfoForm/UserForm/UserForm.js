@@ -21,11 +21,11 @@ function UserForm(props) {
             {heading}
         </div>
         <div className="user-form-body">
-            <TextField className="form-text-field" error={usernameErrorMsg.length > 0} helperText={usernameErrorMsg} varient="outlined" label="Username" value={username}
+            <TextField autoComplete="off" className="form-text-field" error={usernameErrorMsg.length > 0} helperText={usernameErrorMsg} varient="outlined" label="Username" value={username}
                        onChange={(e) => {
                            setUsername(e.currentTarget.value)
                        }}/>
-            <TextField className="form-text-field" error={passwordErrorMsg.length > 0} helperText={passwordErrorMsg}
+            <TextField autoComplete="off" className="form-text-field" error={passwordErrorMsg.length > 0} helperText={passwordErrorMsg}
                        type="password" varient="outlined" label="Password" value={password} onChange={(e) => {
                 setPassword(e.currentTarget.value)
             }}/>
