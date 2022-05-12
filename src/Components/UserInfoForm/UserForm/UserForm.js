@@ -21,17 +21,17 @@ function UserForm(props) {
             {heading}
         </div>
         <div className="user-form-body">
-            <TextField autoComplete="off" className="form-text-field" error={usernameErrorMsg.length > 0} helperText={usernameErrorMsg} varient="outlined" label="Username" value={username}
+            <TextField required={true} autoComplete="off" className="form-text-field" error={usernameErrorMsg.length > 0} helperText={usernameErrorMsg} varient="outlined" label="Username" value={username}
                        onChange={(e) => {
                            setUsername(e.currentTarget.value)
                        }}/>
-            <TextField autoComplete="off" className="form-text-field" error={passwordErrorMsg.length > 0} helperText={passwordErrorMsg}
+            <TextField required={true} autoComplete="off" className="form-text-field" error={passwordErrorMsg.length > 0} helperText={passwordErrorMsg}
                        type="password" varient="outlined" label="Password" value={password} onChange={(e) => {
                 setPassword(e.currentTarget.value)
             }}/>
         </div>
         <div className="user-form-footer">
-            <Button variant="contained">
+            <Button variant="contained" type="submit">
                 Submit
             </Button>
         </div>
