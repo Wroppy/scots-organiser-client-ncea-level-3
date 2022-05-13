@@ -2,9 +2,10 @@ import Button from "@mui/material/Button";
 import PersonIcon from "@mui/icons-material/Person";
 import DensityMedium from "@mui/icons-material/DensityMedium";
 import "./Header.scss";
+import {useLocation} from "react-router-dom";
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import useWindowDimensions from "./../../Hooks/Viewport";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 
 const breakPoint = 800;
 
@@ -13,8 +14,17 @@ function Header(props) {
         setMobileNavbarOpen(!mobileNavbarOpen);
     }
 
+    // Header automatically changes title based on current page
+    const location = useLocation();
+    const heading = useMemo(() => {
+        if (location.pathname === "/"){
+            return "Template"
+        }
+        return location.pathname[1].toUpperCase() + location.pathname.slice(2);
+    }, [location]);
+
     let {width, height} = useWindowDimensions();
-    const heading = props.heading;
+    // const heading = props.heading;
     const showNav = props.showNav;
 
     const [mobileNavbarOpen, setMobileNavbarOpen] = useState(false);

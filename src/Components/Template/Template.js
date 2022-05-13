@@ -6,6 +6,7 @@ import "./../../resources/icons-span/style.css";
 import Header from './Header/Header';
 import "./TemplateMobile.scss";
 
+
 // Urls for the different pages
 let urls = [
     {"text": "Dashboard", url: "", icon: "home"},
@@ -16,13 +17,12 @@ let urls = [
 ]
 
 function Template(props) {
-    let currentHeader = props.heading;
     const showNav = props.showNav;
 
     return <div className="container">
         {showNav && <Navbar urls={urls}/>}
         <div className="content-container">
-            <Header heading={currentHeader} urls={urls} showNav={showNav}/>
+            <Header urls={urls} showNav={showNav}/>
             <Outlet/>
         </div>
     </div>

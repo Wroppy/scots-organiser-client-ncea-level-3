@@ -17,16 +17,15 @@ const theme = createTheme(themeOptions);
 function App() {
     // Hook for the heading at the top of the page.
     // Will be parsed into different components to change the heading
-    let [currentHeader, setCurrentHeader] = useState("Template");
     const [showNav, setShowNav] = useState(true)
 
     // Sets up the theme for the application and the routing
     return <ThemeProvider theme={theme}><BrowserRouter>
         <Routes>
-            <Route path="/" element={<Template heading={currentHeader} showNav={showNav}/>}>
+            <Route path="/" element={<Template showNav={showNav}/>}>
                 <Route index element={<h1>Template</h1>}/>
-                <Route path="register" element={<Register setCurrentHeader={setCurrentHeader} setShowNav={setShowNav}/>}/>
-                <Route path="login" element={<Login setCurrentHeader={setCurrentHeader} setShowNav={setShowNav}/>}/>
+                <Route path="register" element={<Register/>}/>
+                <Route path="login" element={<Login/>}/>
             </Route>
         </Routes>
     </BrowserRouter></ThemeProvider>
