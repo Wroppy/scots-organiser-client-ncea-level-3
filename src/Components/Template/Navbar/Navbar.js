@@ -1,8 +1,17 @@
 import Button from "@mui/material/Button";
 import "./Navbar.scss";
+import {useLocation} from "react-router-dom";
+import {useMemo} from "react";
 
 function Navbar(props) {
-    let urls = props.urls;
+    const urls = props.urls;
+
+    // Disables the nav bar if the url is in the disabled list
+    const disabledNavUrls = props.disabledNavUrls;
+    const location = useLocation();
+    const disableNav = useMemo(() => {
+        return disabledNavUrls.includes(location.pathname);
+    }, [location]);
 
     return <div className="nav-bar-container">
         <div className="nav-bar-header-container">
@@ -13,7 +22,7 @@ function Navbar(props) {
                 let url = value.url;
                 let text = value.text;
                 let iconClass = value.icon;
-                return <Button key={index} className="nav-bar-button">
+                return <Button disabled={disableNav} key={index} className="nav-bar-button">
                     <div className="nav-bar-button-text">
                         <span className={`icon-${iconClass} nav-bar-icon`}/>
                         <span>{text}</span>

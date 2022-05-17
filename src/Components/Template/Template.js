@@ -8,20 +8,24 @@ import "./TemplateMobile.scss";
 
 
 // Urls for the different pages
-let urls = [
+const URLS = [
     {"text": "Dashboard", url: "", icon: "home"},
     {"text": "Tasks", url: "", icon: "tasks"},
     {"text": "Assignments", url: "", icon: "assignments"},
     {"text": "Timetable", url: "", icon: "calendar"},
     {"text": "Goals", url: "", icon: "goals"},
-]
+];
+
+const DISABLED_NAVBAR_URLS = [
+    "/register",
+    "/login"
+];
 
 function Template(props) {
-
     return <div className="container">
-        <Navbar urls={urls}/>
+        <Navbar urls={URLS} disabledNavUrls={DISABLED_NAVBAR_URLS}/>
         <div className="content-container">
-            <Header urls={urls}/>
+            <Header urls={URLS} disabledNavUrls={DISABLED_NAVBAR_URLS}/>
             <Outlet/>
         </div>
     </div>

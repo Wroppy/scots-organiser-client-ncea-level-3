@@ -3,6 +3,7 @@ import "./MobileNavbar.scss";
 
 function MobileNavbar(props) {
     let urls = props.urls;
+    const disableNav = props.disableNav;
     const style = props.style;
 
     return <div className="mobile-navbar-container" style={style}>
@@ -11,7 +12,7 @@ function MobileNavbar(props) {
                 let url = value.url;
                 let text = value.text;
                 let iconClass = value.icon;
-                return <Button key={index} className="nav-bar-button">
+                return <Button disabled={disableNav} key={index} className="nav-bar-button">
                     <div className="nav-bar-button-text">
                         <span className={`icon-${iconClass} nav-bar-icon`}/>
                         <span>{text}</span>

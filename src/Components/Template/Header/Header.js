@@ -14,6 +14,8 @@ function Header(props) {
         setMobileNavbarOpen(!mobileNavbarOpen);
     }
 
+
+
     // Header automatically changes title based on current page
     const location = useLocation();
     const heading = useMemo(() => {
@@ -21,6 +23,12 @@ function Header(props) {
             return "Template"
         }
         return location.pathname[1].toUpperCase() + location.pathname.slice(2);
+    }, [location]);
+
+    // Disables the nav bar if the url is in the disabled list
+    const disabledNavUrls = props.disabledNavUrls;
+    const disableNav = useMemo(() => {
+        return disabledNavUrls.includes(location.pathname);
     }, [location]);
 
     let {width, height} = useWindowDimensions();
@@ -50,7 +58,7 @@ function Header(props) {
             </div>
         </div>
         {width <= breakPoint &&
-            <MobileNavbar urls={props.urls} style={mobileNavbarOpen ? {display: "flex"} : {display: "none"}}/>}
+            <MobileNavbar disableNav={disableNav} urls={props.urls} style={mobileNavbarOpen ? {display: "flex"} : {display: "none"}}/>}
     </div>)
 
 }
