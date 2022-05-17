@@ -17,7 +17,6 @@ let urls = [
 ]
 
 function Template(props) {
-    const showNav = props.showNav;
 
     return <div className="container">
         <Navbar urls={urls}/>
