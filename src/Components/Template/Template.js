@@ -20,9 +20,9 @@ function Template(props) {
     const showNav = props.showNav;
 
     return <div className="container">
-        {showNav && <Navbar urls={urls}/>}
+        <Navbar urls={urls}/>
         <div className="content-container">
-            <Header urls={urls} showNav={showNav}/>
+            <Header urls={urls}/>
             <Outlet/>
         </div>
     </div>
