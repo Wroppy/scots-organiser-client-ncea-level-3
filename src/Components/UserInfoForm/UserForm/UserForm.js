@@ -33,10 +33,10 @@ function UserForm(props) {
     const formSubmit = (e) => {
         e.preventDefault();
         if (showNameField) {
-            handleSubmit(username, password, name);
+            handleSubmit(name, username, password, setNameErrorMsg, setUsernameErrorMsg, setPasswordErrorMsg);
             return;
         }
-        handleSubmit(username, password);
+        handleSubmit(username, password, setUsernameErrorMsg, setPasswordErrorMsg);
     }
 
     // Toggles the password visibility
