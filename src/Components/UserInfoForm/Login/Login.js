@@ -2,7 +2,7 @@
 
 import UserForm from './../UserForm/UserForm';
 import "./Login.scss";
-import {isNameValid, isPasswordValid, isUsernameValid} from "../user_validation";
+import {isPasswordValid, isUsernameValid} from "../user_validation";
 
 function Login(props) {
     let handleSubmit = (username, password, setUsernameError, setPasswordError) => {

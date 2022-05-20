@@ -7,6 +7,7 @@ import Template from './Components/Template/Template';
 import Register from "./Components/UserInfoForm/Register/Register";
 import Login from "./Components/UserInfoForm/Login/Login";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
+import SubjectsPage from "./Components/Subjects/SubjectsPage";
 
 // Importing the theme and the custom styles
 import {ThemeProvider, createTheme} from "@mui/material/styles";
@@ -24,6 +25,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Template/>}>
                 <Route index element={<h1>Template</h1>}/>
+                <Route path="subjects" element={<SubjectsPage/>}/>
                 <Route path="register" element={<Register/>}/>
                 <Route path="login" element={<Login/>}/>
                 <Route path="*" element={<ErrorPage/>}/>
