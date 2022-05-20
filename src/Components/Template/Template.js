@@ -16,16 +16,16 @@ const URLS = [
     {"text": "Goals", url: "", icon: "goals"},
 ];
 
-const DISABLED_NAVBAR_URLS = [
-    "/register",
-    "/login"
+const NAVBAR_URLS = [
+    "/template",
+    "/"
 ];
 
 function Template(props) {
     return <div className="container">
-        <Navbar urls={URLS} disabledNavUrls={DISABLED_NAVBAR_URLS}/>
+        <Navbar urls={URLS} navUrls={NAVBAR_URLS}/>
         <div className="content-container">
-            <Header urls={URLS} disabledNavUrls={DISABLED_NAVBAR_URLS}/>
+            <Header urls={URLS} navUrls={NAVBAR_URLS}/>
             <Outlet/>
         </div>
     </div>

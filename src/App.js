@@ -6,6 +6,7 @@ import {useState} from "react";
 import Template from './Components/Template/Template';
 import Register from "./Components/UserInfoForm/Register/Register";
 import Login from "./Components/UserInfoForm/Login/Login";
+import ErrorPage from "./Components/ErrorPage/ErrorPage";
 
 // Importing the theme and the custom styles
 import {ThemeProvider, createTheme} from "@mui/material/styles";
@@ -25,6 +26,7 @@ function App() {
                 <Route index element={<h1>Template</h1>}/>
                 <Route path="register" element={<Register/>}/>
                 <Route path="login" element={<Login/>}/>
+                <Route path="*" element={<ErrorPage/>}/>
             </Route>
         </Routes>
     </BrowserRouter></ThemeProvider>

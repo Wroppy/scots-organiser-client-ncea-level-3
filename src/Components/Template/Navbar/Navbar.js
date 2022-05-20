@@ -7,10 +7,10 @@ function Navbar(props) {
     const urls = props.urls;
 
     // Disables the nav bar if the url is in the disabled list
-    const disabledNavUrls = props.disabledNavUrls;
+    const navUrls = props.navUrls;
     const location = useLocation();
     const disableNav = useMemo(() => {
-        return disabledNavUrls.includes(location.pathname);
+        return !navUrls.includes(location.pathname);
     }, [location]);
 
     return <div className="nav-bar-container">

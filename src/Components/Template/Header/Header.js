@@ -15,20 +15,25 @@ function Header(props) {
     }
 
 
-
-    // Header automatically changes title based on current page
+    // Disables the nav bar if the url is in the disabled list
     const location = useLocation();
-    const heading = useMemo(() => {
-        if (location.pathname === "/"){
-            return "Template"
-        }
-        return location.pathname[1].toUpperCase() + location.pathname.slice(2);
+
+    const navUrls = props.navUrls;
+    const disableNav = useMemo(() => {
+        return !navUrls.includes(location.pathname);
     }, [location]);
 
-    // Disables the nav bar if the url is in the disabled list
-    const disabledNavUrls = props.disabledNavUrls;
-    const disableNav = useMemo(() => {
-        return disabledNavUrls.includes(location.pathname);
+    // Header automatically changes title based on current page
+    const heading = useMemo(() => {
+        if (location.pathname === "/") {
+            return "Template"
+        }
+        // If it isn't part of the usual paths, it will change the navbar to error
+        if (!["/login", "/register", ...navUrls].includes(location.pathname)) {
+            return "Error 404 Page not found"
+        }
+
+        return location.pathname[1].toUpperCase() + location.pathname.slice(2);
     }, [location]);
 
     let {width, height} = useWindowDimensions();
@@ -40,7 +45,7 @@ function Header(props) {
         <div className="content-header-container">
             <div className="content-header-mobile-container">
                 <div className="content-header-mobile-menu">
-                     <Button color="primary" className="nav-bar-open-button" onClick={changeMobileNavbar}>
+                    <Button color="primary" className="nav-bar-open-button" onClick={changeMobileNavbar}>
                         <DensityMedium/>
                     </Button>
                 </div>
@@ -58,7 +63,8 @@ function Header(props) {
             </div>
         </div>
         {width <= breakPoint &&
-            <MobileNavbar disableNav={disableNav} urls={props.urls} style={mobileNavbarOpen ? {display: "flex"} : {display: "none"}}/>}
+            <MobileNavbar disableNav={disableNav} urls={props.urls}
+                          style={mobileNavbarOpen ? {display: "flex"} : {display: "none"}}/>}
     </div>)
 
 }
