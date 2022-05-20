@@ -52,7 +52,7 @@ function Header(props) {
                 <div className="header-text">
                     {heading}
                 </div>
-                <Button className="header-button">
+                <Button className="header-button" disabled={disableNav}>
                     <PersonIcon/>
                 </Button>
             </div>

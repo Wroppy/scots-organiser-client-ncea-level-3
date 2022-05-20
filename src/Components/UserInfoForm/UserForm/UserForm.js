@@ -4,7 +4,8 @@ import "./UserForm.scss";
 import Button from "@mui/material/Button";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import {IconButton, InputAdornment} from "@mui/material";
+import {IconButton} from "@mui/material";
+import {Link} from "react-router-dom";
 
 function UserForm(props) {
     // Hooks for the text fields, along with the error messages
@@ -28,6 +29,11 @@ function UserForm(props) {
 
     // For if the user wants a name field in the form
     const showNameField = props.showNameField;
+
+    // Gets the footer text and link
+    const footerText = props.footerText;
+    const footerLink = props.footerPath;
+    const footerLinkText = props.footerPathText;
 
     // function for the form onSubmit
     const formSubmit = (e) => {
@@ -66,7 +72,7 @@ function UserForm(props) {
             {showNameField && <TextField required={true} autoComplete="off" className="form-text-field"
                                          error={nameErrorMsg.length > 0} helperText={nameErrorMsg}
                                          variant="outlined"
-                                         label="Name" value={name} onChange={(e) => {
+                                         label="First Name" value={name} onChange={(e) => {
                 setName(e.currentTarget.value);
             }}/>}
             <TextField required={true} autoComplete="off" className="form-text-field"
@@ -84,6 +90,8 @@ function UserForm(props) {
                        }} InputProps={{endAdornment: passwordInputAdornment()}}/>
         </div>
         <div className="user-form-footer">
+            {/* Links to a path given through props */}
+            <span>{footerText} <Link className="user-footer-link" to={footerLink}>{footerLinkText}</Link></span>
             <Button variant="contained" type="submit">
                 Submit
             </Button>
@@ -91,4 +99,4 @@ function UserForm(props) {
     </form>
 }
 
-export default UserForm
+export default UserForm;

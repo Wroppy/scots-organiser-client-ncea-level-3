@@ -9,19 +9,19 @@ function Register(props) {
     const handleSubmit = (name, username, password, setNameError, setUsernameError, setPasswordError) => {
         const timeout = 2000
         let nameValid = isNameValid(name);
-        if (!nameValid.valid){
+        if (!nameValid.valid) {
             setNameError(nameValid.error);
             setTimeout(() => setNameError(""), timeout);
             return;
         }
         let usernameValid = isUsernameValid(username);
-        if (!usernameValid.valid){
+        if (!usernameValid.valid) {
             setUsernameError(usernameValid.error);
             setTimeout(() => setUsernameError(""), timeout);
             return;
         }
         let passwordValid = isPasswordValid(password);
-        if (!passwordValid.valid){
+        if (!passwordValid.valid) {
             setPasswordError(passwordValid.error);
             setTimeout(() => setPasswordError(""), timeout);
             return;
@@ -32,7 +32,8 @@ function Register(props) {
 
 
     return <div className="register-page-container">
-        <UserForm formClassName="register-form-container" heading="Register" showNameField={true} submit={handleSubmit}/>
+        <UserForm formClassName="register-form-container" heading="Register" showNameField={true} submit={handleSubmit}
+                  footerText="Already have an account? Login" footerPath="/login" footerPathText="here"/>
     </div>
 }
 
