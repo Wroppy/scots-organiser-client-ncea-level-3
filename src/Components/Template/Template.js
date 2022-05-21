@@ -11,7 +11,7 @@ import "./TemplateMobile.scss";
 const URLS = [
     {"text": "Dashboard", url: "", icon: "home"},
     {"text": "Tasks", url: "", icon: "tasks"},
-    {"text": "Subjects", url: "", icon: "books"},
+    {"text": "Subjects", url: "/subjects", icon: "books"},
     {"text": "Assignments", url: "", icon: "assignments"},
     {"text": "Timetable", url: "", icon: "calendar"},
     {"text": "Goals", url: "", icon: "goals"},

@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import "./Navbar.scss";
-import {useLocation} from "react-router-dom";
+import {useLocation, Link} from "react-router-dom";
 import {useMemo} from "react";
 
 function Navbar(props) {
@@ -22,7 +22,7 @@ function Navbar(props) {
                 let url = value.url;
                 let text = value.text;
                 let iconClass = value.icon;
-                return <Button disabled={disableNav} key={index} className="nav-bar-button">
+                return <Button component={Link} to={url} disabled={disableNav} key={index} className="nav-bar-button">
                     <div className="nav-bar-button-text">
                         <span className={`icon-${iconClass} nav-bar-icon`}/>
                         <span>{text}</span>

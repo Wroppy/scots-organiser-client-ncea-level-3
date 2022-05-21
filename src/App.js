@@ -19,7 +19,7 @@ const theme = createTheme(themeOptions);
 function App() {
     // Hook for the heading at the top of the page.
     // Will be parsed into different components to change the heading
-
+ 
     // Sets up the theme for the application and the routing
     return <ThemeProvider theme={theme}><BrowserRouter>
         <Routes>
