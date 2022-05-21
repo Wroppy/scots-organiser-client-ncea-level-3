@@ -11,7 +11,7 @@ async function fetchButLikeFetch(path) {
 
     const response = await fetch(`${urlPrefix}${path}`,
             {
-                method: "post",
+                method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(["hi"]),
 
