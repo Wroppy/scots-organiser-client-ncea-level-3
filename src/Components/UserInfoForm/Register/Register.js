@@ -2,12 +2,13 @@ import UserForm from './../UserForm/UserForm';
 import "./Register.scss";
 import {isNameValid, isUsernameValid, isPasswordValid, isEmailValid} from "../user_validation";
 import React from "react";
+import getTestFetch from "../../../Fetches";
 
 // Component: Register
 // Description: Register form
 
 function Register(props) {
-    const handleSubmit = (name, username, password, email, setNameError, setUsernameError, setPasswordError, setEmailError, setLoading) => {
+    const  handleSubmit = async (name, username, password, email, setNameError, setUsernameError, setPasswordError, setEmailError, setLoading) => {
         const timeout = 2000
         let nameValid = isNameValid(name);
         if (!nameValid.valid) {
@@ -15,12 +16,14 @@ function Register(props) {
             setTimeout(() => setNameError(""), timeout);
             return;
         }
+
         let usernameValid = isUsernameValid(username);
         if (!usernameValid.valid) {
             setUsernameError(usernameValid.error);
             setTimeout(() => setUsernameError(""), timeout);
             return;
         }
+
         let passwordValid = isPasswordValid(password);
         if (!passwordValid.valid) {
             setPasswordError(passwordValid.error);
@@ -38,6 +41,9 @@ function Register(props) {
         //  Disables the buttons
         setLoading(true);
 
+        let data = await (await getTestFetch("/hello")).text()
+
+        console.log(data);
     }
 
 

@@ -45,8 +45,9 @@ export function isPasswordValid(password) {
 
 export function isEmailValid(email) {
     if (email.length > 100){
-        return {valid: false, error: "Password must be at under 100 characters long"}
+        return {valid: false, error: "Password must be at under 100 characters long"};
     }
+    return {valid: true, error: ""};
 }
 
 
