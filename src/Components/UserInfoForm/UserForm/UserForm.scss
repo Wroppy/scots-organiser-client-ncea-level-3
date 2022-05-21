@@ -36,3 +36,10 @@
 .user-footer-link {
   color: $primary;
 }
+
+
+.css-qb7u9c-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{
+  -webkit-box-shadow: 0 0 0 100px $background-primary inset !important;
+  -webkit-text-fill-color: $text-primary !important;
+
+}

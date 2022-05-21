@@ -5,6 +5,7 @@ import Navbar from './Navbar/Navbar';
 import "./../../resources/icons-span/style.css";
 import Header from './Header/Header';
 import "./TemplateMobile.scss";
+import React from "react";
 
 
 // Urls for the different pages

@@ -4,6 +4,7 @@ import {FormControl, InputLabel, ListItem, ListSubheader, MenuItem, Select, SvgI
 import Button from "@mui/material/Button";
 import Add from "@mui/icons-material/Add";
 import {useState} from "react";
+import React from "react";
 
 
 function SubjectsPage(props) {

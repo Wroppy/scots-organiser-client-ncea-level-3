@@ -6,6 +6,7 @@ import {useLocation} from "react-router-dom";
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import useWindowDimensions from "./../../Hooks/Viewport";
 import {useMemo, useState} from "react";
+import React from "react";
 
 const breakPoint = 800;
 

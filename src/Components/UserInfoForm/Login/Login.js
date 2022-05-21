@@ -3,6 +3,7 @@
 import UserForm from './../UserForm/UserForm';
 import "./Login.scss";
 import {isPasswordValid, isUsernameValid} from "../user_validation";
+import React from "react";
 
 function Login(props) {
     let handleSubmit = (username, password, setUsernameError, setPasswordError) => {
@@ -24,7 +25,7 @@ function Login(props) {
 
 
     return <div className="login-page-container">
-        <UserForm formClassName="login-form-container" heading="Login" showNameField={false} submit={handleSubmit}
+        <UserForm formClassName="login-form-container" heading="Login" showRegisterFields={false} submit={handleSubmit}
                   footerText="Don't have an account? Register" footerPath="/register" footerPathText="here"/>
     </div>
 }

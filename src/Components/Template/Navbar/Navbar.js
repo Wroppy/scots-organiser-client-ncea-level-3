@@ -2,6 +2,8 @@ import Button from "@mui/material/Button";
 import "./Navbar.scss";
 import {useLocation, Link} from "react-router-dom";
 import {useMemo} from "react";
+import React from "react";
+
 
 function Navbar(props) {
     const urls = props.urls;

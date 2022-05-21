@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
 import "./MobileNavbar.scss";
 import {Link} from "react-router-dom";
+import React from "react";
 
 function MobileNavbar(props) {
     let urls = props.urls;

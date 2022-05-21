@@ -1,12 +1,13 @@
 import UserForm from './../UserForm/UserForm';
 import "./Register.scss";
-import {isNameValid, isUsernameValid, isPasswordValid} from "../user_validation";
+import {isNameValid, isUsernameValid, isPasswordValid, isEmailValid} from "../user_validation";
+import React from "react";
 
 // Component: Register
 // Description: Register form
 
 function Register(props) {
-    const handleSubmit = (name, username, password, setNameError, setUsernameError, setPasswordError) => {
+    const handleSubmit = (name, username, password, email, setNameError, setUsernameError, setPasswordError, setEmailError, setLoading) => {
         const timeout = 2000
         let nameValid = isNameValid(name);
         if (!nameValid.valid) {
@@ -27,12 +28,22 @@ function Register(props) {
             return;
         }
 
-        console.log(`Registering user ${name} with username ${username} and password ${password}`);
+        let emailValid = isEmailValid(email);
+        if (!emailValid.valid) {
+            setEmailError(emailValid.error);
+            setTimeout(() => setEmailError(""), timeout);
+            return;
+        }
+        console.log(`Registering user ${name} with email ${email} username ${username} and password ${password}`);
+        //  Disables the buttons
+        setLoading(true);
+
     }
 
 
     return <div className="register-page-container">
-        <UserForm formClassName="register-form-container" heading="Register" showNameField={true} submit={handleSubmit}
+        <UserForm formClassName="register-form-container" heading="Register" showRegisterFields={true}
+                  submit={handleSubmit}
                   footerText="Already have an account? Login" footerPath="/login" footerPathText="here"/>
     </div>
 }

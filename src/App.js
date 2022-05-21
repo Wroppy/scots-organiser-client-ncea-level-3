@@ -1,6 +1,6 @@
 // Imports react components
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {useState} from "react";
+import React from "react";
 
 // Importing the pages we want to render
 import Template from './Components/Template/Template';
@@ -19,7 +19,7 @@ const theme = createTheme(themeOptions);
 function App() {
     // Hook for the heading at the top of the page.
     // Will be parsed into different components to change the heading
- 
+
     // Sets up the theme for the application and the routing
     return <ThemeProvider theme={theme}><BrowserRouter>
         <Routes>
