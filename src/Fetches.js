@@ -4,10 +4,20 @@ const urlPrefixes = [
 ];
 
 
-const urlPrefix = urlPrefixes[1];
+const urlPrefix = urlPrefixes[0];
 
 async function fetchButLikeFetch(path) {
-    const response = await fetch(`${urlPrefix}${path}`);
+    // Sends a post request to the server
+
+    const response = await fetch(`${urlPrefix}${path}`,
+            {
+                method: "post",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(["hi"]),
+
+            }
+        )
+    ;
     return response;
 }
 
