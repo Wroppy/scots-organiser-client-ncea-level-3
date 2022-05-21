@@ -4,7 +4,7 @@ const urlPrefixes = [
 ];
 
 
-const urlPrefix = urlPrefixes[0];
+const urlPrefix = urlPrefixes[1];
 
 async function fetchButLikeFetch(path) {
     // Sends a post request to the server
@@ -14,7 +14,6 @@ async function fetchButLikeFetch(path) {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(["hi"]),
-
             }
         )
     ;
