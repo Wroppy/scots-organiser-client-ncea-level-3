@@ -11,6 +11,11 @@ function Register(props) {
     const [userFormError, setUserFormError] = useState("");
     const [userFormDisabled, setUserFormDisabled] = useState(false);
 
+    // If the user is already logged in, redirect them to the home page
+    if (localStorage.getItem("userAuthToken")) {
+        window.location.href = "/";
+    }
+
     const handleSubmit = async (name, username, password, email, setNameError, setUsernameError, setPasswordError, setEmailError) => {
         setUserFormDisabled(true);
         const timeout = 2000

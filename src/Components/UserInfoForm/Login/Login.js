@@ -9,6 +9,12 @@ import serverFetch from "../../../Fetches";
 function Login(props) {
     const [disableUserForm, setDisableUserForm] = useState(false);
     const [userFormError, setUserFormError] = useState("");
+
+    // If the user is already logged in, redirect them to the home page
+    if (localStorage.getItem("userAuthToken")) {
+        window.location.href = "/";
+    }
+
     let handleSubmit = async (username, password, setUsernameError, setPasswordError) => {
         setDisableUserForm(true);
         const timeout = 2000
