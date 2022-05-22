@@ -3,9 +3,10 @@
 import UserForm from './../UserForm/UserForm';
 import "./Login.scss";
 import {isPasswordValid, isUsernameValid} from "../user_validation";
-import React from "react";
+import React, {useState} from "react";
 
 function Login(props) {
+    const [userFormError, setUserFormError] = useState("");
     let handleSubmit = (username, password, setUsernameError, setPasswordError) => {
         const timeout = 2000
         let usernameValid = isUsernameValid(username);
@@ -25,7 +26,7 @@ function Login(props) {
 
 
     return <div className="login-page-container">
-        <UserForm formClassName="login-form-container" heading="Login" showRegisterFields={false} submit={handleSubmit}
+        <UserForm userFormError={userFormError} formClassName="login-form-container" heading="Login" showRegisterFields={false} submit={handleSubmit}
                   footerText="Don't have an account? Register" footerPath="/register" footerPathText="here"/>
     </div>
 }

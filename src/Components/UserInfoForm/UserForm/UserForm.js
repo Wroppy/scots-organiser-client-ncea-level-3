@@ -7,8 +7,12 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {IconButton} from "@mui/material";
 import {Link} from "react-router-dom";
 import React from "react";
+import Loader from "./LoadingAnimation/Loader";
 
 function UserForm(props) {
+    const disabled = props.disableUserForm;
+    const userFormError = props.userFormError;
+
     // Hooks for the text fields, along with the error messages
     const [username, setUsername] = useState("");
     const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
@@ -22,7 +26,6 @@ function UserForm(props) {
     const [email, setEmail] = useState("");
     const [emailErrorMsg, setEmailErrorMsg] = useState("");
 
-    const [loading, setLoading] = useState(false);
 
     // Function for the form submit
     const handleSubmit = props.submit;
@@ -45,10 +48,10 @@ function UserForm(props) {
     const formSubmit = (e) => {
         e.preventDefault();
         if (showRegisterFields) {
-            handleSubmit(name, username, password, email, setNameErrorMsg, setUsernameErrorMsg, setPasswordErrorMsg, setEmailErrorMsg, setLoading);
+            handleSubmit(name, username, password, email, setNameErrorMsg, setUsernameErrorMsg, setPasswordErrorMsg, setEmailErrorMsg);
             return;
         }
-        handleSubmit(username, password, setUsernameErrorMsg, setPasswordErrorMsg, setLoading);
+        handleSubmit(username, password, setUsernameErrorMsg, setPasswordErrorMsg);
     }
 
     // Toggles the password visibility
@@ -80,14 +83,14 @@ function UserForm(props) {
                                               variant="outlined"
                                               label="First Name" value={name} onChange={(e) => {
                 setName(e.currentTarget.value);
-            }}/>
+            }} disabled={disabled}/>
             }
             {showRegisterFields && <TextField required={true} autoComplete="off" className="form-text-field"
                                               error={emailErrorMsg.length > 0} helperText={emailErrorMsg}
                                               variant="outlined"
                                               label="Email" value={email} onChange={(e) => {
                 setEmail(e.currentTarget.value);
-            }}/>}
+            }} disabled={disabled}/>}
 
 
             <TextField required={true} autoComplete="off" className="form-text-field"
@@ -95,21 +98,26 @@ function UserForm(props) {
                        label="Username" value={username}
                        onChange={(e) => {
                            setUsername(e.currentTarget.value)
-                       }}/>
+                       }} disabled={disabled}/>
             <TextField required={true} autoComplete="off" className="form-text-field"
                        error={passwordErrorMsg.length > 0} helperText={passwordErrorMsg}
                        type={showPassword ? "text" : "password"} varient="outlined" label="Password"
                        value={password}
                        onChange={(e) => {
                            setPassword(e.currentTarget.value)
-                       }} InputProps={{endAdornment: passwordInputAdornment()}}/>
+                       }} InputProps={{endAdornment: passwordInputAdornment()}} disabled={disabled}/>
         </div>
         <div className="user-form-footer">
-            {/* Links to a path given through props */}
-            <span>{footerText} <Link className="user-footer-link" to={footerLink}>{footerLinkText}</Link></span>
-            <Button variant="contained" type="submit">
-                Submit
-            </Button>
+            <div className="footer-nav">
+                {/* Links to a path given through props */}
+                <span>{footerText} <Link className="user-footer-link" to={footerLink}>{footerLinkText}</Link></span>
+                <Button variant="contained" type="submit" disabled={disabled}>
+                    Submit {disabled && <Loader/>}
+                </Button>
+            </div>
+            <div className="footer-error">
+                {userFormError}
+            </div>
         </div>
     </form>
 }

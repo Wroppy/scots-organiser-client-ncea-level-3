@@ -24,7 +24,7 @@
       width: 100%;
       margin-bottom: 1rem;
 
-       input {
+      input {
         box-shadow: 0 0 0 100px $background-primary inset !important;
         -webkit-text-fill-color: $text-primary !important;
       }
@@ -33,8 +33,17 @@
 
   .user-form-footer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+
+    .footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-error{
+      color: red;
+    }
   }
 }
 
