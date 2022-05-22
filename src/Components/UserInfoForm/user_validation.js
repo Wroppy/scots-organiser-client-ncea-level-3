@@ -4,9 +4,7 @@ const minimumUsernamePasswordLength = 4;
 const maximumUsernamePasswordLength = 50;
 
 function containsOnlyLettersAndNumbers(string, allowDashes) {
-    console.log(`${string} ${allowDashes}`)
     if (allowDashes) {
-        console.log(string);
 
         // Returns if the string contains only letters and numbers, and dashes
         if (/^[a-zA-Z0-9-]+$/.test(string)) {

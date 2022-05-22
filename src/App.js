@@ -1,6 +1,6 @@
 // Imports react components
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import React from "react";
+import React, {useEffect} from "react";
 
 // Importing the pages we want to render
 import Template from './Components/Template/Template';
