@@ -7,6 +7,8 @@ import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import useWindowDimensions from "./../../Hooks/Viewport";
 import {useMemo, useState} from "react";
 import React from "react";
+import {IconButton, Menu} from "@mui/material";
+import ProfileMenu from "./ProfileMenu/ProfileMenu";
 
 const breakPoint = 800;
 
@@ -42,6 +44,8 @@ function Header(props) {
 
     const [mobileNavbarOpen, setMobileNavbarOpen] = useState(false);
 
+    const [menuOpen, setMenuOpen] = useState(false);
+
     return (<div className="content-header">
         <div className="content-header-container">
             <div className="content-header-mobile-container">
@@ -58,9 +62,7 @@ function Header(props) {
                 <div className="header-text">
                     {heading}
                 </div>
-                <Button className="header-button" disabled={disableNav}>
-                    <PersonIcon/>
-                </Button>
+                <ProfileMenu disabled={disableNav}/>
             </div>
         </div>
         {width <= breakPoint &&
