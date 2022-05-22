@@ -4,7 +4,7 @@ const urlPrefixes = [
 ];
 
 
-const urlPrefix = urlPrefixes[0];
+const urlPrefix = urlPrefixes[1];
 
 async function serverFetch(path, body) {
     // Sends a post request to the server
