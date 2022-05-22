@@ -2,13 +2,13 @@ import UserForm from './../UserForm/UserForm';
 import "./Register.scss";
 import {isNameValid, isUsernameValid, isPasswordValid, isEmailValid} from "../user_validation";
 import React from "react";
-import getTestFetch from "../../../Fetches";
+import serverFetch from "../../../Fetches";
 
 // Component: Register
 // Description: Register form
 
 function Register(props) {
-    const  handleSubmit = async (name, username, password, email, setNameError, setUsernameError, setPasswordError, setEmailError, setLoading) => {
+    const handleSubmit = async (name, username, password, email, setNameError, setUsernameError, setPasswordError, setEmailError, setLoading) => {
         const timeout = 2000
         let nameValid = isNameValid(name);
         if (!nameValid.valid) {
@@ -37,15 +37,21 @@ function Register(props) {
             setTimeout(() => setEmailError(""), timeout);
             return;
         }
-        console.log(`Registering user ${name} with email ${email} username ${username} and password ${password}`);
         //  Disables the buttons
         setLoading(true);
 
-        let data = await (await getTestFetch("/hello")).text()
-
+        let body = {name, username, password, email};
+        let data = await (await serverFetch("/register-user", body)).json()
         console.log(data);
-    }
 
+        // If it is not valid, it will display an error message
+        if (!data.valid){
+            return;
+        }
+
+        // If it is valid, it will add the JWT token to the local storage
+        localStorage.setItem("userAuthToken", data.JWTAuthToken);
+    }
 
     return <div className="register-page-container">
         <UserForm formClassName="register-form-container" heading="Register" showRegisterFields={true}

@@ -107,7 +107,7 @@ function UserForm(props) {
         <div className="user-form-footer">
             {/* Links to a path given through props */}
             <span>{footerText} <Link className="user-footer-link" to={footerLink}>{footerLinkText}</Link></span>
-            <Button loading={loading} variant="contained" type="submit">
+            <Button variant="contained" type="submit">
                 Submit
             </Button>
         </div>
