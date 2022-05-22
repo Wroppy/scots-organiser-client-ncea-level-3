@@ -28,7 +28,7 @@ function Login(props) {
         }
 
         console.log(`Logging into ${username} with password ${password}`);
-        let response = await serverFetch("/login-user", {username, password});
+        let response = await serverFetch("/login-user", {username, password}, {});
         let data = await response.json();
         console.log(data);
         if (!data.valid) {

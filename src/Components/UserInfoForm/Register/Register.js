@@ -47,7 +47,7 @@ function Register(props) {
         }
 
         let body = {name, username, password, email};
-        let data = await (await serverFetch("/register-user", body)).json()
+        let data = await (await serverFetch("/register-user", body, {})).json()
         console.log(data);
 
         // If it is not valid, it will display an error message
