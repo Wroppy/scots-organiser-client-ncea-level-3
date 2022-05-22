@@ -13,6 +13,7 @@ import SubjectsPage from "./Components/Subjects/SubjectsPage";
 import {ThemeProvider, createTheme} from "@mui/material/styles";
 import themeOptions from "./Components/Themes/Dark/Dark";
 import './App.scss';
+import TestingTemplate from "./Components/Template/TestingTemplate";
 
 const theme = createTheme(themeOptions);
 
@@ -24,7 +25,7 @@ function App() {
     return <ThemeProvider theme={theme}><BrowserRouter>
         <Routes>
             <Route path="/" element={<Template/>}>
-                <Route index element={<h1>Template</h1>}/>
+                <Route index element={<TestingTemplate/>}/>
                 <Route path="subjects" element={<SubjectsPage/>}/>
                 <Route path="register" element={<Register/>}/>
                 <Route path="login" element={<Login/>}/>

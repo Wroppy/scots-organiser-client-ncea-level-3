@@ -6,13 +6,14 @@ const urlPrefixes = [
 
 const urlPrefix = urlPrefixes[1];
 
-async function serverFetch(path, body) {
+async function serverFetch(path, body, headers) {
     // Sends a post request to the server
-
+    headers = {...headers, "Content-Type": "application/json"};
+    console.log(headers)
     const response = await fetch(`${urlPrefix}${path}`,
             {
                 method: "POST",
-                headers: {'Content-Type': 'application/json'},
+                headers: headers,
                 body: JSON.stringify(body),
             }
         )
