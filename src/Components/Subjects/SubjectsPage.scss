@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  overflow: auto;
 
   .subjects-navigation {
     display: flex;
@@ -14,15 +15,37 @@
       display: flex !important;
       align-items: center;
 
+      .subject-filter-input {
+        margin-right: 0.5rem;
+      }
     }
   }
 
   .subjects-list-container {
+    display: flex;
+    flex-direction: column;
     margin-top: 0.5rem;
     flex-grow: 1;
-    background-color: $background-dark;
-    overflow: auto;
+    //background-color: $background-dark;
+    //overflow: auto;
 
 
+    .empty-subjects-container {
+      display: flex;
+
+      height: 100%;
+      width: 100%;
+
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .subject-display-container{
+      display: flex;
+      border-bottom:  1px solid $border-color;
+    }
   }
+
+
 }
