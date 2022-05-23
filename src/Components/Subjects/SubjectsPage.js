@@ -64,6 +64,17 @@ function SubjectsPage(props) {
         }
     }
 
+    const updateSubject = (previousSubjectName, subject) => {
+        for (let i = 0; i < subjects.length; i++) {
+            if (subjects[i].subject_name === previousSubjectName) {
+                let newSubjects = [...subjects];
+                newSubjects[i] = subject;
+                setSubjects(newSubjects);
+                break;
+            }
+        }
+    }
+
     let getSubjectsFromServer = async () => {
         let token = localStorage.getItem("userAuthToken");
         let response = await serverFetch("/get-subjects", {}, {userAuthToken: token});
@@ -110,7 +121,7 @@ function SubjectsPage(props) {
                     `You have no subjects starting with the characters "${filterText.toLowerCase()}"`}
                 </div> :
                 subjects.sort(sortSubjects).filter(subject => filterSubjects(subject)).map((subject, index) => {
-                    return <SubjectView removeSubject={removeSubject} subject={subject} key={index}/>
+                    return <SubjectView editSubject={updateSubject} removeSubject={removeSubject} subject={subject} key={index}/>
                 })}
         </div>
     </div>

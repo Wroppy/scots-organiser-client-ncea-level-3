@@ -53,9 +53,9 @@ export default function SubjectView(props) {
                 <ConfirmModal onConfirm={deleteSubject} title="Are You Sure You Want To Delete?"
                               buttonProps={{variant: "outlined", size: "small"}} confirmText="Yes" rejectText="No"
                               openModalText="Delete"/>
-                <EditSubjectModal description={subject.description} room={subject.room}
+                <EditSubjectModal editSubject={props.editSubject} description={subject.description} room={subject.room}
                                   backgroundColour={subject.background_colour} teacher={subject.teacher}
-                                  name={subject.name}/>
+                                  name={subject.subject_name}/>
 
             </div>
         </AccordionDetails>

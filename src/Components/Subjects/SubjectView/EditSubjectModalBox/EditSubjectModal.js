@@ -8,6 +8,9 @@ import {ChromePicker} from "react-color";
 
 
 export default function EditSubjectModal(props) {
+    const PREVIOUS_NAME = props.name;
+    console.log(PREVIOUS_NAME)
+
     const [open, setOpen] = useState(false);
     const [subjectName, setSubjectName] = useState(props.name);
     const [teacherName, setTeacherName] = useState(props.teacher);
@@ -23,7 +26,7 @@ export default function EditSubjectModal(props) {
     const colorInput = useRef();
     let [backgroundColour, setBackgroundColour] = useState(props.backgroundColour);
 
-    // let editSubject = props.editSubject;
+    let editSubject = props.editSubject;
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const colourPickerOpen = Boolean(anchorEl);
@@ -37,6 +40,7 @@ export default function EditSubjectModal(props) {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        console.log("Submitting");
 
         // subject name, teacher and room must be between 1 and 50 characters
         if (subjectName.length < 1 || subjectName.length > 50) {
@@ -68,8 +72,8 @@ export default function EditSubjectModal(props) {
             return;
         }
         // If there are no errors, gets the data and sends it to the server
-        // setDisabled(true);
         let body = {
+            previousSubjectName: PREVIOUS_NAME,
             subjectName,
             teacherName,
             room,
@@ -77,33 +81,33 @@ export default function EditSubjectModal(props) {
             backgroundColour
         };
 
-        console.log(body);
         // Gets the jwt token from local storage
-        // let token = localStorage.getItem("userAuthToken");
-        // setDisabled(true);
+        let token = localStorage.getItem("userAuthToken");
+        setDisabled(true);
 
-        // let data = await serverFetch("/add-subject", body, {userAuthToken: token});
-        // let response = await data.json();
-        // console.error(response);
-        // setDisabled(false);
-        // if (response.valid) {
-        //     setOpen(false);
-        //
-        //     // Adds the subject to the list of subjects
-        //     let subject = {
-        //         subject_name: subjectName,
-        //         teacher: teacherName,
-        //         room,
-        //         description,
-        //         background_colour: backgroundColour
-        //     }
-        //     addSubject(subject);
-        //     return;
-        // }
-        // setError(response.message);
-        // setTimeout(() => {
-        //     setError("");
-        // }, 2000);
+        let data = await serverFetch("/edit-subject", body, {userAuthToken: token});
+        let response = await data.json();
+        console.error(response);
+        setDisabled(false);
+        if (response.valid) {
+            setOpen(false);
+
+            // Adds the subject to the list of subjects
+            let subject = {
+                subject_name: subjectName,
+                teacher: teacherName,
+                room,
+                description,
+                background_colour: backgroundColour
+            }
+            console.log(PREVIOUS_NAME, JSON.stringify(subject));
+            editSubject(PREVIOUS_NAME, subject);
+            return;
+        }
+        setError(response.message);
+        setTimeout(() => {
+            setError("");
+        }, 2000);
     };
 
 
@@ -112,7 +116,14 @@ export default function EditSubjectModal(props) {
             return;
         }
         setOpen(false);
-    }
+        // Sets the state of the subject name, teacher name, room and description to the previous values
+        setSubjectName(PREVIOUS_NAME);
+        setTeacherName(props.teacher);
+        setRoom(props.room);
+        setDescription(props.description);
+        setBackgroundColour(props.backgroundColour);
+    };
+
     return <>
         <Button size="small" className="subject-add-button" variant="outlined" onClick={e => setOpen(true)}>
             Edit
@@ -158,7 +169,7 @@ export default function EditSubjectModal(props) {
                     <span>
                         {error}
                     </span>
-                    <LoadingButton disabled={disabled} className="edit-subject-button" variant="contained"
+                    <LoadingButton type="submit" disabled={disabled} className="edit-subject-button" variant="contained"
                                    value="Save Subject"/>
                 </div>
             </form>
