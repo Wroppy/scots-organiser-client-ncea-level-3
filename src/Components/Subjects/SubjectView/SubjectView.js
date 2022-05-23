@@ -1,12 +1,26 @@
 import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "./SubjectView.scss";
+import EditSubjectModal from "./EditSubjectModalBox/EditSubjectModal";
+import Button from "@mui/material/Button";
+import ConfirmModal from "../../ConfirmModal/ConfirmModal";
+import serverFetch from "../../../Fetches";
 
 export default function SubjectView(props) {
     let subject = props.subject;
     console.log(subject)
 
-    return <Accordion>
+    let deleteSubject = async (closeModal) => {
+        // Deletes the subject
+        let response = await serverFetch("/delete-subject", {subjectName: subject.subject_name}, {userAuthToken: localStorage.getItem("userAuthToken")});
+        let data = await response.json();
+        if (data.valid) {
+            closeModal();
+            props.removeSubject(subject.subject_name);
+        }
+    }
+
+    return <><Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
             <div className="accordion-summary">
                 <span>
@@ -23,7 +37,8 @@ export default function SubjectView(props) {
                     Room: {subject.room}
                 </span>
                 <span>
-                    Background Colour: {<span style={{color: subject.background_colour}}>{subject.background_colour}</span>}
+                    Background Colour: {<span
+                    style={{color: subject.background_colour}}>{subject.background_colour}</span>}
                 </span>
             </div>
             <br/>
@@ -33,6 +48,17 @@ export default function SubjectView(props) {
                 {/* If there is no description it will inform the user there is no user*/}
                 {subject.description.length === 0 ? "There is no description for this subject" : subject.description}
             </div>
+            <div className="accordion-footer">
+
+                <ConfirmModal onConfirm={deleteSubject} title="Are You Sure You Want To Delete?"
+                              buttonProps={{variant: "outlined", size: "small"}} confirmText="Yes" rejectText="No"
+                              openModalText="Delete"/>
+                <EditSubjectModal description={subject.description} room={subject.room}
+                                  backgroundColour={subject.background_colour} teacher={subject.teacher}
+                                  name={subject.name}/>
+
+            </div>
         </AccordionDetails>
     </Accordion>
+    </>
 }

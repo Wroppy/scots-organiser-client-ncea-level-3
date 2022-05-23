@@ -1,0 +1,27 @@
+@import "./../Colours/Dark/main";
+
+
+.confirm-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $text-primary;
+
+  .modal-header{
+    background-color: $primary;
+    padding: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .modal-body{
+    background-color: $background-dark;
+    padding: 1rem;
+    display: flex;
+    justify-items: center;
+    justify-content: end;
+
+    button + button{
+      margin-left: 0.25rem;
+    }
+  }
+}

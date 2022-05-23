@@ -18,6 +18,15 @@ $breakpoint-small: 800px;
   align-items: center;
 }
 
+.accordion-footer{
+  display: flex;
+  justify-content: end;
+
+  button + button{
+    margin-left: 0.5rem;
+  }
+}
+
 @media screen and (max-width: $breakpoint-small) {
   .accordion-details {
     flex-direction: column;

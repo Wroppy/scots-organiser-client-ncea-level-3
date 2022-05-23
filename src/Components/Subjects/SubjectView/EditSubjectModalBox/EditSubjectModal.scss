@@ -1,6 +1,6 @@
-@import "./../../Colours/Dark/main";
+@import "./../../../Colours/Dark/main";
 
-.add-subject-modal {
+.edit-subject-modal {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
     width: 100%;
     max-width: 700px;
 
-    .add-subject-header {
+    .edit-subject-header {
       margin-bottom: 1rem;
       font-size: 1.2rem;
       display: flex;
@@ -32,17 +32,13 @@
       align-items: center;
       border: 1px solid rgba(255, 255, 255, 0.23);
       border-radius: 4px;
-      padding: 0.3rem 0.8rem;
-      justify-content: space-between;
-      span{
-        color: $text-primary;
-      }
 
-      label{
+      label {
         padding: 8.5px 14px;
         flex-grow: 1;
       }
-      input{
+
+      input {
         border: none;
         //padding: 8.5px 14px;
 
@@ -58,14 +54,48 @@
       border-color: rgba(255, 255, 255, 0.23);
     }
 
-    .form-footer{
+    .form-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
 
-      span{
+      span {
         color: $error-primary;
       }
+    }
+  }
+}
+
+.chrome-picker {
+  background-color: $background-dark !important;
+
+  input {
+    background-color: $background-dark;
+    color: $text-primary !important;
+    font-family: 'Roboto', 'sans-serif';
+    box-shadow: none !important;
+    border: 1px solid $border-color !important;
+    box-sizing: border-box !important;
+  }
+
+  label {
+    font-family: 'Roboto', 'sans-serif';
+    display: none !important;
+  }
+
+  div[style="height: 10px; position: relative;"] {
+    display: none;
+  }
+
+  div[style="width: 32px; text-align: right; position: relative;"] {
+    display: none;
+  }
+
+  .flexbox-fix {
+    align-items: center;
+
+    div div {
+      margin: 0 !important;
     }
   }
 }

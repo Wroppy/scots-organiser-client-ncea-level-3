@@ -52,18 +52,32 @@ function SubjectsPage(props) {
         setSubjects([...subjects, subject]);
     }
 
-    useEffect(() => {
-        (async () => {
-            let token = localStorage.getItem("userAuthToken");
-            let response = await serverFetch("/get-subjects", {}, {userAuthToken: token});
-            let data = await response.json();
-            console.error(data);
-            if (!data.valid) {
-                console.error("Error getting subjects");
-                return;
+    const removeSubject = (subjectName) => {
+        console.log("removing subject")
+        for (let i = 0; i < subjects.length; i++) {
+            if (subjects[i].subject_name === subjectName) {
+                let newSubjects = [...subjects];
+                newSubjects.splice(i, 1);
+                setSubjects(newSubjects);
+                break;
             }
-            setSubjects(data.subjects);
-        })()
+        }
+    }
+
+    let getSubjectsFromServer = async () => {
+        let token = localStorage.getItem("userAuthToken");
+        let response = await serverFetch("/get-subjects", {}, {userAuthToken: token});
+        let data = await response.json();
+        console.error(data);
+        if (!data.valid) {
+            console.error("Error getting subjects");
+            return;
+        }
+        setSubjects(data.subjects);
+    }
+
+    useEffect(() => {
+        (async () => {await getSubjectsFromServer()})()
     }, [])
 
     const handleChange = (event) => {
@@ -96,7 +110,7 @@ function SubjectsPage(props) {
                     `You have no subjects starting with the characters "${filterText.toLowerCase()}"`}
                 </div> :
                 subjects.sort(sortSubjects).filter(subject => filterSubjects(subject)).map((subject, index) => {
-                    return <SubjectView subject={subject} key={index}/>
+                    return <SubjectView removeSubject={removeSubject} subject={subject} key={index}/>
                 })}
         </div>
     </div>
