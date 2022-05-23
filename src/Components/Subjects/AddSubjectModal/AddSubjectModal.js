@@ -23,6 +23,8 @@ export default function AddSubjectModal(props) {
     const colorInput = useRef();
     let backgroundColour = "#000000";
 
+    let addSubject = props.addSubject;
+
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -77,6 +79,16 @@ export default function AddSubjectModal(props) {
         setDisabled(false);
         if (response.valid) {
             setOpen(false);
+
+            // Adds the subject to the list of subjects
+            let subject = {
+                subject_name: subjectName,
+                teacher: teacherName,
+                room,
+                description,
+                background_colour: backgroundColour
+            }
+            addSubject(subject);
             return;
         }
         setError(response.message);

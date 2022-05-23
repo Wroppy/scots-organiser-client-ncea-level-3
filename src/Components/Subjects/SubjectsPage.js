@@ -1,18 +1,5 @@
 import "./SubjectsPage.scss";
-import List from "@mui/material/List";
-import {
-    FormControl,
-    InputLabel,
-    ListItem,
-    ListSubheader,
-    MenuItem,
-    Select,
-    SvgIcon,
-    Table, TableBody, TableCell, TableHead,
-    TextField
-} from "@mui/material";
-import Button from "@mui/material/Button";
-import Add from "@mui/icons-material/Add";
+import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {useEffect, useState} from "react";
 import React from "react";
 import AddSubjectModal from "./AddSubjectModal/AddSubjectModal";
@@ -24,13 +11,46 @@ function SubjectsPage(props) {
     let filterOptions = [
         "name",
         "teacher",
-        "date added"
     ];
 
     const [filterIndex, setFilterIndex] = useState(0);
     const [filterText, setFilterText] = useState("");
 
+    const filterSubjects = (subject) => {
+        // Filter subjects based on the filter input
+        if (filterText.length === 0) {
+            return true;
+        }
+        return subject.subject_name.toLowerCase().startsWith(filterText.toLowerCase());
+    }
+
+    const sortSubjects = (subjectA, subjectB) => {
+        let subjectAComparison, subjectBComparison;
+
+        // Sorts by subject name
+        if (filterIndex === 0) {
+            subjectAComparison = subjectA.subject_name.toUpperCase();
+            subjectBComparison = subjectB.subject_name.toUpperCase();
+        } else {
+            // Sorts by teacher name
+            subjectAComparison = subjectA.teacher.toUpperCase();
+            subjectBComparison = subjectB.teacher.toUpperCase();
+
+        }
+        if (subjectAComparison < subjectBComparison) {
+            return -1;
+        }
+        if (subjectAComparison > subjectBComparison) {
+            return 1;
+        }
+        return 0;
+    }
+
     const [subjects, setSubjects] = useState([]);
+
+    let addSubject = (subject) => {
+        setSubjects([...subjects, subject]);
+    }
 
     useEffect(() => {
         (async () => {
@@ -52,7 +72,7 @@ function SubjectsPage(props) {
 
     return <div className="subjects-page-container">
         <div className="subjects-navigation">
-            <AddSubjectModal/>
+            <AddSubjectModal addSubject={addSubject}/>
             <div className="subject-filter-container">
                 <TextField size="small" autoComplete="off" className="subject-filter-input" label="Filter Subjects"
                            value={filterText} onChange={e => setFilterText(e.currentTarget.value)}/>
@@ -70,11 +90,12 @@ function SubjectsPage(props) {
         <div className="subjects-list-container">
             {/*  If there are no subjects, a page saying you can add a subject b y clicking the + button else it will hide it
         and display the subjects*/}
-            {subjects.length === 0 ?
-                <div className="empty-subjects-container">You currently have no subjects. Press the + button and fill
-                    out
-                    the form to add a subject</div> :
-                subjects.map((subject, index) => {
+            {subjects.filter(subject => filterSubjects(subject)).length === 0 ?
+                <div
+                    className="empty-subjects-container">{filterText.length === 0 ? "You currently have no subjects. Press the + button and fill out the form to add a subject" :
+                    `You have no subjects starting with the characters "${filterText.toLowerCase()}"`}
+                </div> :
+                subjects.sort(sortSubjects).filter(subject => filterSubjects(subject)).map((subject, index) => {
                     return <SubjectView subject={subject} key={index}/>
                 })}
         </div>
