@@ -5,6 +5,7 @@ import React from "react";
 import AddSubjectModal from "./AddSubjectModal/AddSubjectModal";
 import serverFetch from "../../Fetches";
 import SubjectView from "./SubjectView/SubjectView";
+import LoadingIcon from "../LoadingIcon/LoadingIcon";
 
 
 function SubjectsPage(props) {
@@ -15,6 +16,7 @@ function SubjectsPage(props) {
 
     const [filterIndex, setFilterIndex] = useState(0);
     const [filterText, setFilterText] = useState("");
+    const [loading, setLoading] = useState(true);
 
     const filterSubjects = (subject) => {
         // Filter subjects based on the filter input
@@ -88,7 +90,10 @@ function SubjectsPage(props) {
     }
 
     useEffect(() => {
-        (async () => {await getSubjectsFromServer()})()
+        (async () => {
+            await getSubjectsFromServer();
+            setLoading(false);
+        })()
     }, [])
 
     const handleChange = (event) => {
@@ -115,14 +120,20 @@ function SubjectsPage(props) {
         <div className="subjects-list-container">
             {/*  If there are no subjects, a page saying you can add a subject b y clicking the + button else it will hide it
         and display the subjects*/}
-            {subjects.filter(subject => filterSubjects(subject)).length === 0 ?
-                <div
-                    className="empty-subjects-container">{filterText.length === 0 ? "You currently have no subjects. Press the + button and fill out the form to add a subject" :
-                    `You have no subjects starting with the characters "${filterText.toLowerCase()}"`}
-                </div> :
-                subjects.sort(sortSubjects).filter(subject => filterSubjects(subject)).map((subject, index) => {
-                    return <SubjectView editSubject={updateSubject} removeSubject={removeSubject} subject={subject} key={index}/>
-                })}
+            {loading ?
+                <div style={{flexGrow: 1, display: "flex", justifyContent: "center", alignItems: "center"}}><LoadingIcon
+                    width="30" height="30"/></div> :
+                subjects.filter(subject => filterSubjects(subject)).length === 0 ?
+                    <div
+                        className="empty-subjects-container">{filterText.length === 0 ? "You currently have no subjects. Press the + button and fill out the form to add a subject" :
+                        `You have no subjects starting with the characters "${filterText.toLowerCase()}"`}
+                    </div> :
+                    subjects.sort(sortSubjects).filter(subject => filterSubjects(subject)).map((subject, index) => {
+                        return <SubjectView editSubject={updateSubject} removeSubject={removeSubject} subject={subject}
+                                            key={index}/>
+                    })
+
+            }
         </div>
     </div>
 }
