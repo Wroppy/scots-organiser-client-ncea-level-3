@@ -34,6 +34,14 @@ export default function AddSubjectModal(props) {
         setAnchorEl(null);
     };
 
+    const clearFields = () => {
+        setSubjectName("");
+        setTeacherName("");
+        setRoom("");
+        setDescription("");
+        setBackgroundColour("#000000");
+    }
+
     let addSubject = props.addSubject;
 
     const onSubmit = async (e) => {
@@ -161,8 +169,14 @@ export default function AddSubjectModal(props) {
                     <span>
                         {error}
                     </span>
-                    <LoadingButton type="submit" disabled={disabled} className="add-subject-button" variant="contained">Add
-                        Subject</LoadingButton>
+                    <div>
+                        <Button disabled={disabled} className="clear-fields-button" variant="outlined" onClick={clearFields}>
+                            Clear Fields
+                        </Button>
+                        <LoadingButton type="submit" disabled={disabled} className="add-subject-button"
+                                       variant="outlined">Add
+                            Subject</LoadingButton>
+                    </div>
                 </div>
             </form>
         </Modal>
