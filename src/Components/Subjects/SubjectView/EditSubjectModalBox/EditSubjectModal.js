@@ -1,30 +1,42 @@
 import "./EditSubjectModal.scss";
 import {Menu, Modal, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import serverFetch from "../../../../Fetches";
 import LoadingButton from "../../../LoadingButton/LoadingButton";
 import {ChromePicker} from "react-color";
+import useStateWithDep from "../../../Hooks/UseStateWithDep";
 
 
 export default function EditSubjectModal(props) {
-    const PREVIOUS_NAME = props.name;
+    const PREVIOUS_NAME = props.subject.subject_name;
     console.log(PREVIOUS_NAME)
 
     const [open, setOpen] = useState(false);
-    const [subjectName, setSubjectName] = useState(props.name);
-    const [teacherName, setTeacherName] = useState(props.teacher);
-    const [room, setRoom] = useState(props.room);
-    const [description, setDescription] = useState(props.description);
+
+
+    const [subjectName, setSubjectName] = useStateWithDep(props.subject.subject_name);
+    const [teacherName, setTeacherName] = useStateWithDep(props.subject.teacher);
+    const [room, setRoom] = useStateWithDep(props.subject.room);
+    const [description, setDescription] = useStateWithDep(props.subject.description);
     const [error, setError] = useState("");
     const [disabled, setDisabled] = useState(false);
+
+    useEffect(() => {
+        console.log(subjectName)
+        console.log(teacherName)
+        console.log(room)
+        console.log(description)
+
+    }, [open]);
+
 
     const [subjectNameError, setSubjectNameError] = useState("");
     const [teacherNameError, setTeacherNameError] = useState("");
     const [roomError, setRoomError] = useState("");
     const [descriptionError, setDescriptionError] = useState("");
     const colorInput = useRef();
-    let [backgroundColour, setBackgroundColour] = useState(props.backgroundColour);
+    let [backgroundColour, setBackgroundColour] = useStateWithDep(props.subject.background_colour);
 
     let editSubject = props.editSubject;
 
@@ -118,10 +130,10 @@ export default function EditSubjectModal(props) {
         setOpen(false);
         // Sets the state of the subject name, teacher name, room and description to the previous values
         setSubjectName(PREVIOUS_NAME);
-        setTeacherName(props.teacher);
-        setRoom(props.room);
-        setDescription(props.description);
-        setBackgroundColour(props.backgroundColour);
+        setTeacherName(props.subject.teacher);
+        setRoom(props.subject.room);
+        setDescription(props.subject.description);
+        setBackgroundColour(props.subject.backgroundColour);
     };
 
     return <>
@@ -169,7 +181,7 @@ export default function EditSubjectModal(props) {
                     <span>
                         {error}
                     </span>
-                    <LoadingButton type="submit" disabled={disabled} className="edit-subject-button" variant="contained"
+                    <LoadingButton type="submit" disabled={disabled} className="edit-subject-button" variant="outlined"
                                    value="Save Subject"/>
                 </div>
             </form>

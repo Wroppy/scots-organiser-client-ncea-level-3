@@ -8,7 +8,7 @@ import serverFetch from "../../../Fetches";
 
 export default function SubjectView(props) {
     let subject = props.subject;
-    console.log(subject)
+    console.log(JSON.stringify(subject));
 
     let deleteSubject = async (closeModal) => {
         // Deletes the subject
@@ -53,9 +53,7 @@ export default function SubjectView(props) {
                 <ConfirmModal onConfirm={deleteSubject} title="Are You Sure You Want To Delete?"
                               buttonProps={{variant: "outlined", size: "small"}} confirmText="Yes" rejectText="No"
                               openModalText="Delete"/>
-                <EditSubjectModal editSubject={props.editSubject} description={subject.description} room={subject.room}
-                                  backgroundColour={subject.background_colour} teacher={subject.teacher}
-                                  name={subject.subject_name}/>
+                <EditSubjectModal editSubject={props.editSubject} subject={props.subject}/>
 
             </div>
         </AccordionDetails>

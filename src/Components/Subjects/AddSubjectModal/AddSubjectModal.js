@@ -116,7 +116,7 @@ export default function AddSubjectModal(props) {
 
 
     return <>
-        <Button className="subject-add-button" variant="contained" onClick={e => setOpen(true)}>
+        <Button className="subject-add-button" variant="outlined" onClick={e => setOpen(true)}>
             <Add/>
         </Button>
 
