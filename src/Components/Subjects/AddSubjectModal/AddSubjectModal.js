@@ -107,6 +107,7 @@ export default function AddSubjectModal(props) {
                 "background_colour": backgroundColour
             }
             addSubject(subject);
+            clearFields();
             return;
         }
         setError(response.message);
