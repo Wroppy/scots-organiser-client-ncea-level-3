@@ -13,6 +13,7 @@ import ProfileMenu from "./ProfileMenu/ProfileMenu";
 const breakPoint = 800;
 
 function Header(props) {
+
     const changeMobileNavbar = () => {
         setMobileNavbarOpen(!mobileNavbarOpen);
     }
