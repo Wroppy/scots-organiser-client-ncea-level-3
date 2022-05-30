@@ -102,7 +102,7 @@ function SubjectsPage(props) {
 
     return <div className="subjects-page-container">
         <div className="subjects-navigation">
-            <AddSubjectModal addSubject={addSubject}/>
+            <AddSubjectModal addSubject={addSubject} disableAddButton={loading}/>
             <div className="subject-filter-container">
                 <TextField size="small" autoComplete="off" className="subject-filter-input" label="Filter Subjects"
                            value={filterText} onChange={e => setFilterText(e.currentTarget.value)}/>

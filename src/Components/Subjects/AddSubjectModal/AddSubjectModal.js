@@ -9,6 +9,8 @@ import {ChromePicker} from "react-color";
 
 
 export default function AddSubjectModal(props) {
+    const disableAddButton = props.disableAddButton;
+
     const [open, setOpen] = useState(false);
     const [subjectName, setSubjectName] = useState("");
     const [teacherName, setTeacherName] = useState("");
@@ -125,7 +127,7 @@ export default function AddSubjectModal(props) {
 
 
     return <>
-        <Button className="subject-add-button" variant="outlined" onClick={e => setOpen(true)}>
+        <Button disabled={disableAddButton} className="subject-add-button" variant="outlined" onClick={e => setOpen(true)}>
             <Add/>
         </Button>
 
@@ -171,7 +173,8 @@ export default function AddSubjectModal(props) {
                         {error}
                     </span>
                     <div>
-                        <Button disabled={disabled} className="clear-fields-button" variant="outlined" onClick={clearFields}>
+                        <Button disabled={disabled} className="clear-fields-button" variant="outlined"
+                                onClick={clearFields}>
                             Clear Fields
                         </Button>
                         <LoadingButton type="submit" disabled={disabled} className="add-subject-button"
