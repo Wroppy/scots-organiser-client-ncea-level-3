@@ -11,10 +11,10 @@ import React from "react";
 // Urls for the different pages
 const URLS = [
     {"text": "Dashboard", url: "", icon: "home"},
-    {"text": "Tasks", url: "", icon: "tasks"},
-    {"text": "Subjects", url: "/subjects", icon: "books"},
-    {"text": "Assignments", url: "", icon: "assignments"},
     {"text": "Timetable", url: "", icon: "calendar"},
+    {"text": "Subjects", url: "/subjects", icon: "books"},
+    {"text": "Tasks", url: "", icon: "tasks"},
+    {"text": "Assignments", url: "", icon: "assignments"},
     {"text": "Goals", url: "/goals", icon: "goals"},
 ];
 
