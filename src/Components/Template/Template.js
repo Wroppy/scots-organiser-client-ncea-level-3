@@ -15,12 +15,13 @@ const URLS = [
     {"text": "Subjects", url: "/subjects", icon: "books"},
     {"text": "Assignments", url: "", icon: "assignments"},
     {"text": "Timetable", url: "", icon: "calendar"},
-    {"text": "Goals", url: "", icon: "goals"},
+    {"text": "Goals", url: "/goals", icon: "goals"},
 ];
 
 const NAVBAR_URLS = [
     "/template",
     "/subjects",
+    "/goals",
     "/"
 ];
 

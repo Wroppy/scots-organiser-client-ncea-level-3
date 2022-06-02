@@ -8,6 +8,7 @@ import Register from "./Components/UserInfoForm/Register/Register";
 import Login from "./Components/UserInfoForm/Login/Login";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import SubjectsPage from "./Components/Subjects/SubjectsPage";
+import GoalsPage from "./Components/GoalsPage/GoalsPage";
 
 // Importing the theme and the custom styles
 import {ThemeProvider, createTheme} from "@mui/material/styles";
@@ -30,6 +31,7 @@ function App() {
                 <Route path="register" element={<Register/>}/>
                 <Route path="login" element={<Login/>}/>
                 <Route path="*" element={<ErrorPage/>}/>
+                <Route path="goals" element={<GoalsPage/>}/>
             </Route>
         </Routes>
     </BrowserRouter></ThemeProvider>

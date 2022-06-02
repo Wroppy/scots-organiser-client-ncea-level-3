@@ -13,11 +13,9 @@ import ProfileMenu from "./ProfileMenu/ProfileMenu";
 const breakPoint = 800;
 
 function Header(props) {
-
     const changeMobileNavbar = () => {
         setMobileNavbarOpen(!mobileNavbarOpen);
     }
-
 
     // Disables the nav bar if the url is in the disabled list
     const location = useLocation();
@@ -44,8 +42,6 @@ function Header(props) {
     // const heading = props.heading;
 
     const [mobileNavbarOpen, setMobileNavbarOpen] = useState(false);
-
-    const [menuOpen, setMenuOpen] = useState(false);
 
     return (<div className="content-header">
         <div className="content-header-container">

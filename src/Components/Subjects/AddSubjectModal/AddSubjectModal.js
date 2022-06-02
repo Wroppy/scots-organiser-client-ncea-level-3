@@ -89,14 +89,12 @@ export default function AddSubjectModal(props) {
             backgroundColour
         };
 
-        console.log(body);
         // Gets the jwt token from local storage
         let token = localStorage.getItem("userAuthToken");
         setDisabled(true);
 
         let data = await serverFetch("/add-subject", body, {userAuthToken: token});
         let response = await data.json();
-        console.error(response);
         setDisabled(false);
         if (response.valid) {
             setOpen(false);
