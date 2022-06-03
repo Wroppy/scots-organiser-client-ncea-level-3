@@ -1,0 +1,59 @@
+@import "./../../../Colours/Dark/main";
+
+.add-goals-button {
+  height: 40px;
+}
+
+.add-goals-modal-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .add-goals-modal-content {
+    background-color: $background-primary;
+    color: white;
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+
+    .add-goals-modal-form {
+      flex-grow: 1;
+
+      .add-goals-modal-header {
+        padding: 1rem;
+        font-size: 1.1rem;
+        background-color: $background-dark;
+      }
+
+      .add-goals-modal-content {
+        padding: 0 1rem 1rem 1rem;
+        box-sizing: border-box;
+
+        .add-goals-text-area {
+          margin-top: 1rem;
+        }
+      }
+
+      .add-goals-modal-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: $background-dark;
+
+        span {
+          color: $error-primary;
+        }
+
+      }
+    }
+
+
+  }
+
+
+}
