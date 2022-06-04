@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import "./SetTimetableModal.scss";
 import TimetableHelpModal from "./TimetableHelpModal/TimetableHelpModal";
 import DisableLoadingButton from "../../DisableLoadingButton/DisableLoadingButton";
+import serverFetch from "../../../Fetches";
 
 const steps = [
     "Set Your Subject Order",
@@ -36,7 +37,7 @@ export default function SetTimetableModal(props) {
     const [disableNextButton, setDisableNextButton] = useState(false);
 
 
-    const clearSubjectModal = () => {
+    const clearTimetableModal = () => {
         setSubject1("");
         setSubject2("");
         setSubject3("");
@@ -69,6 +70,14 @@ export default function SetTimetableModal(props) {
         setOpen(true);
     }
 
+    // Essentially makes it so the 2 subjects can't be in 1 subject order
+    // This works because subject name is unique to each subject and cannot be duplicated. This means it will not
+    // mess up the disableSubjectNames function
+    const disableSubjectNames = (subjectName) => {
+        return subjectOrder.includes(subjectName);
+
+    }
+
 
     const onClose = () => {
         // Closes the modal only if the modal is not loading
@@ -80,10 +89,37 @@ export default function SetTimetableModal(props) {
         setCurrentStep(0);
     }
 
+    const submitForm = async () => {
+        setIsLoading(true);
+
+        // Gets the jwt auth token from the local storage
+        const token = localStorage.getItem("userAuthToken");
+        const body = {
+            weekAStartingSubject: weekA,
+            weekBStartingSubject: weekB,
+            subjectOrder: subjectOrder
+        }
+
+        let response = await serverFetch("/set-timetable", body, {userAuthToken: token});
+        let data = await response.json();
+
+        if (data.valid) {
+            onClose();
+
+            // Clears the modal of any subjects
+            clearTimetableModal()
+            return;
+        }
+
+        // Displays an error message if the server returns an error
+        alert(data.errorMessage);
+    }
+
     const handleNext = () => {
         // If the current step is the last step, then submit the form
         if (currentStep === maxSteps - 1) {
-            setIsLoading(true);
+            submitForm();
+            setIsLoading(false);
             return;
         }
 
@@ -123,7 +159,8 @@ export default function SetTimetableModal(props) {
                                             setSubjectOrder[index](newSubject);
                                         }}>
                                             {subjectNames.map((subjectName, index) => {
-                                                return <MenuItem key={index} value={subjectName}>{subjectName}</MenuItem>
+                                                return <MenuItem disabled={disableSubjectNames(subjectName)} key={index}
+                                                                 value={subjectName}>{subjectName}</MenuItem>
                                             })}
                                         </Select>
                                     </FormControl>
@@ -174,8 +211,9 @@ export default function SetTimetableModal(props) {
                 </div>
                 <div className="set-timetable-modal-footer">
                     <MobileStepper className="set-timetable-stepper" varient="text" steps={maxSteps} position="static"
-                                   activeStep={currentStep} backButton={<Button disabled={(currentStep === 0) || isLoading}
-                                                                                onClick={handleBack}><KeyboardArrowLeft/>Back</Button>}
+                                   activeStep={currentStep}
+                                   backButton={<Button disabled={(currentStep === 0) || isLoading}
+                                                       onClick={handleBack}><KeyboardArrowLeft/>Back</Button>}
                                    nextButton={<DisableLoadingButton disabled={disableNextButton || isLoading}
                                                                      showForwardArrow={true}
                                                                      onClick={handleNext} loading={isLoading}
