@@ -1,0 +1,72 @@
+@import "./../../Colours/Dark/main";
+
+.set-timetable-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-primary;
+
+  .timetable-modal-content {
+    background-color: $background-dark;
+    max-width: 700px;
+    height: 500px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    .set-timetable-modal-header {
+      font-size: 1.25rem;
+      padding: 1rem 1.5rem;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .set-timetable-help {
+        font-size: 1.1rem;
+        border: 1px solid $text-primary;
+      }
+    }
+
+    .set-timetable-modal-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+
+
+      .set-timetable-modal-body-header {
+        background-color: $background-primary;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+      }
+
+      .set-timetable-modal-body-content {
+        flex-grow: 1;
+        padding: 1rem 2rem;
+        background-color: $background-primary;
+
+        .set-timetable-modal-steps {
+          flex-direction: column;
+
+          div + div {
+            margin-top: 1.5rem;
+          }
+
+        }
+
+      }
+    }
+
+    .set-timetable-modal-footer {
+      .set-timetable-stepper {
+        background-color: $background-dark;
+      }
+    }
+
+
+  }
+
+
+}

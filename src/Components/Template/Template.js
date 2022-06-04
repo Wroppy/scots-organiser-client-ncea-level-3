@@ -11,7 +11,7 @@ import React from "react";
 // Urls for the different pages
 const URLS = [
     {"text": "Dashboard", url: "", icon: "home"},
-    {"text": "Timetable", url: "", icon: "calendar"},
+    {"text": "Timetable", url: "/timetable", icon: "calendar"},
     {"text": "Subjects", url: "/subjects", icon: "books"},
     {"text": "Tasks", url: "", icon: "tasks"},
     {"text": "Assignments", url: "", icon: "assignments"},
@@ -20,6 +20,7 @@ const URLS = [
 
 const NAVBAR_URLS = [
     "/template",
+    "/timetable",
     "/subjects",
     "/goals",
     "/"

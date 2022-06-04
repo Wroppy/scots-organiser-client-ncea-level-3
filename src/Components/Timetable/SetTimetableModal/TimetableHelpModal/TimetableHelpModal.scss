@@ -1,0 +1,28 @@
+@import "./../../../Colours/Dark/main";
+
+.timetable-help-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .timetable-help-modal-content{
+    background-color: $background-dark;
+    max-width: 550px;
+    width: 100%;
+    color: $text-primary;
+
+    .timetable-help-modal-header{
+      font-size: 1.25rem;
+      padding: 1rem 1.5rem;
+    }
+
+    .timetable-help-modal-body{
+      padding: 0 1.5rem 1rem 1.5rem;
+
+      .timetable-help-how-to-use{
+      }
+
+    }
+
+  }
+}

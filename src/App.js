@@ -9,12 +9,13 @@ import Login from "./Components/UserInfoForm/Login/Login";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import SubjectsPage from "./Components/Subjects/SubjectsPage";
 import GoalsPage from "./Components/GoalsPage/GoalsPage";
+import TimetablePage from "./Components/Timetable/TimetablePage";
+import TestingTemplate from "./Components/Template/TestingTemplate";
 
 // Importing the theme and the custom styles
 import {ThemeProvider, createTheme} from "@mui/material/styles";
 import themeOptions from "./Components/Themes/Dark/Dark";
 import './App.scss';
-import TestingTemplate from "./Components/Template/TestingTemplate";
 
 const theme = createTheme(themeOptions);
 
@@ -32,6 +33,7 @@ function App() {
                 <Route path="login" element={<Login/>}/>
                 <Route path="*" element={<ErrorPage/>}/>
                 <Route path="goals" element={<GoalsPage/>}/>
+                <Route path="timetable" element={<TimetablePage/>}/>
             </Route>
         </Routes>
     </BrowserRouter></ThemeProvider>
