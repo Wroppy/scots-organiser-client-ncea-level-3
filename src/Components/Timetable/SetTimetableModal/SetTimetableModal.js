@@ -75,7 +75,12 @@ export default function SetTimetableModal(props) {
     // mess up the disableSubjectNames function
     const disableSubjectNames = (subjectName) => {
         return subjectOrder.includes(subjectName);
+    }
 
+
+    // Only allows the user to select a subject if it is already in the subject order
+    const disableSubjectStart = (subjectName) => {
+        return !subjectOrder.includes(subjectName);
     }
 
 
@@ -182,7 +187,8 @@ export default function SetTimetableModal(props) {
                                                 setWeekA(event.target.value);
                                             }}>
                                         {subjectNames.map((subjectName, index) => {
-                                            return <MenuItem value={subjectName} key={index}>{subjectName} </MenuItem>
+                                            return <MenuItem disabled={disableSubjectStart(subjectName)}
+                                                             value={subjectName} key={index}>{subjectName} </MenuItem>
                                         })}
                                     </Select>
                                 </FormControl>
@@ -201,7 +207,8 @@ export default function SetTimetableModal(props) {
                                         setWeekB(e.target.value);
                                     }}>
                                         {subjectNames.map((subjectName, index) => {
-                                            return <MenuItem value={subjectName} key={index}>{subjectName} </MenuItem>
+                                            return <MenuItem disabled={disableSubjectStart(subjectName)}
+                                                             value={subjectName} key={index}>{subjectName} </MenuItem>
                                         })}
                                     </Select>
                                 </FormControl>
