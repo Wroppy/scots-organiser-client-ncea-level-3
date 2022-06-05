@@ -80,14 +80,14 @@ function UserForm(props) {
             {/* Conditional rendering if the name field needs to be on */}
             {showRegisterFields && <TextField required={true} autoComplete="off" className="form-text-field"
                                               error={nameErrorMsg.length > 0} helperText={nameErrorMsg}
-                                              variant="outlined"
+                                              variant="outlined" inputProps={{ maxLength: 50 }}
                                               label="First Name" value={name} onChange={(e) => {
                 setName(e.currentTarget.value);
             }} disabled={disabled}/>
             }
             {showRegisterFields && <TextField required={true} autoComplete="off" className="form-text-field"
                                               error={emailErrorMsg.length > 0} helperText={emailErrorMsg}
-                                              variant="outlined"
+                                              variant="outlined" inputProps={{ maxLength: 50 }}
                                               label="Email" value={email} onChange={(e) => {
                 setEmail(e.currentTarget.value);
             }} disabled={disabled}/>}
@@ -95,14 +95,14 @@ function UserForm(props) {
 
             <TextField required={true} autoComplete="off" className="form-text-field"
                        error={usernameErrorMsg.length > 0} helperText={usernameErrorMsg} varient="outlined"
-                       label="Username" value={username}
+                       label="Username" value={username} inputProps={{ maxLength: 50 }}
                        onChange={(e) => {
                            setUsername(e.currentTarget.value)
                        }} disabled={disabled}/>
             <TextField required={true} autoComplete="off" className="form-text-field"
                        error={passwordErrorMsg.length > 0} helperText={passwordErrorMsg}
                        type={showPassword ? "text" : "password"} varient="outlined" label="Password"
-                       value={password}
+                       value={password} inputProps={{ maxLength: 100 }}
                        onChange={(e) => {
                            setPassword(e.currentTarget.value)
                        }} InputProps={{endAdornment: passwordInputAdornment()}} disabled={disabled}/>
