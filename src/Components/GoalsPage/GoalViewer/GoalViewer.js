@@ -17,8 +17,7 @@ export default function GoalViewer(props) {
                 </span>
                 <span className="goal-completed-container">
                     {/* If it is completed, show the green check, otherwise, show red cross*/}
-                    {/*Completed: {goal.completed ? <Check color="primary"/> : <Clear color="error"/>}*/}
-                    Completed: { <Check sx={{color: green[500]}}/>}
+                    Completed: {goal.completed ? <Check color="primary"/> : <Clear color="error"/>}
 
                 </span>
             </div>
