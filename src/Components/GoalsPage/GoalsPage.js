@@ -34,7 +34,6 @@ export default function GoalsPage() {
                     setGoals(data.goals);
                     setIsLoading(false);
                 }
-
             } else {
                 console.log(response);
             }

@@ -38,9 +38,27 @@ export default function AddGoalsModal() {
         let response = await serverFetch("/add-goal", body, {userAuthToken: token});
         let data = await response.json();
         console.log(data);
-        setIsFormFetching(false);
-        clearFields();
-        setOpen(false);
+
+        if (data.valid) {
+            let goal = {
+                goal_id: data.goalID,
+                subject_name: "",
+                name,
+                description,
+                completed: false
+            }
+
+            setIsFormFetching(false);
+            clearFields();
+            setOpen(false);
+            setGoals([...goals, goal])
+            return;
+        }
+        setFormError("An Error Occurred");
+        setTimeout(() => {
+            setFormError("")
+        }, 1000)
+
     }
 
     const handleOpen = () => {
@@ -72,8 +90,7 @@ export default function AddGoalsModal() {
                                    fullWidth={true} required={true}
                                    value={name} onChange={(e) => {
                             setName(e.currentTarget.value);
-                        }}
-                        />
+                        }}/>
                         <TextField disabled={isFormFetching} inputProps={{maxLength: 1000}}
                                    className="add-goals-text-area" multiline={true}
                                    rows={5}
