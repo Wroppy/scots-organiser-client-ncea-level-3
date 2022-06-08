@@ -5,7 +5,6 @@ import "./GoalsPageHeader.scss";
 export default function GoalsPageHeader(props){
     return <div className="goals-page-header-container">
         <AddGoalsModal/>
-
-        <TextField variant="outlined" size="small" label="Filter Goals"/>
+        <TextField autoComplete="off" variant="outlined" size="small" label="Filter Goals"/>
     </div>
 }
