@@ -3,6 +3,8 @@ import {useState, createContext, useEffect} from "react";
 import GoalsPageHeader from "./GoalsPageHeader/GoalsPageHeader";
 import serverFetch from "../../Fetches";
 import GoalViewer from "./GoalViewer/GoalViewer";
+import LoadingIcon from "../LoadingIcon/LoadingIcon";
+import React from "react";
 
 export const GoalsContext = createContext([]);
 export const LoadingContext = createContext(true);
@@ -44,14 +46,25 @@ export default function GoalsPage() {
         <LoadingContext.Provider value={isLoading}>
             <div className="goals-page-container">
                 <GoalsPageHeader filterState={[goalFilter, setGoalFilter]}/>
-                <div className="goals-list-container">
-                    {goals.filter(filterGoal).map(
-                        (goal, index) => {
-                            return <GoalViewer key={index} goal={goal}/>
-                        }
-                    )}
-                </div>
-            </div>
-        </LoadingContext.Provider>
-    </GoalsContext.Provider>
-}
+                {/*When it is loading, show a loading symbol. If there are no goals, so text*/}
+
+                {isLoading ?
+                    <div style={{flexGrow: 1, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        <LoadingIcon width="30" height="30"/></div> :
+                    goals.length === 0 ?
+                        <div style={{flexGrow: 1, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            You currently have no goals. Press the + button and fill out the form to add a goal
+                        </div> :
+                        <div className="goals-list-container">
+                            {goals.filter(filterGoal).length === 0 ? <div
+                                    style={{flexGrow: 1, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                                {`You currently have no goals starting with "${goalFilter}"`}
+                                </div> : goals.filter(filterGoal).map((goal, index) => {
+                                            return <GoalViewer key={index} goal={goal}/>
+                                        })}
+                                </div>
+                            }
+                        </div>
+                    </LoadingContext.Provider>
+                    </GoalsContext.Provider>
+                }
