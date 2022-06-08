@@ -39,7 +39,6 @@ export default function AddGoalsModal() {
         let data = await response.json();
         console.log(data);
         setIsFormFetching(false);
-
         clearFields();
         setOpen(false);
     }
@@ -54,7 +53,6 @@ export default function AddGoalsModal() {
         }
         setOpen(false);
     }
-
 
     return <>
         <Button disabled={isPageLoading} onClick={handleOpen} className="add-goals-button" variant="outlined">

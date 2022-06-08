@@ -2,6 +2,7 @@ import "./GoalsPage.scss";
 import {useState, createContext, useEffect} from "react";
 import GoalsPageHeader from "./GoalsPageHeader/GoalsPageHeader";
 import serverFetch from "../../Fetches";
+import GoalViewer from "./GoalViewer/GoalViewer";
 
 export const GoalsContext = createContext([]);
 export const LoadingContext = createContext(true);
@@ -24,7 +25,6 @@ export default function GoalsPage() {
             else{
                 console.log(response);
             }
-
         })();
     }, [])
 
@@ -33,6 +33,13 @@ export default function GoalsPage() {
         <LoadingContext.Provider value={isLoading}>
             <div className="goals-page-container">
                 <GoalsPageHeader/>
+                <div className="goals-list-container">
+                    {goals.map(
+                        (goal, index) => {
+                            return <GoalViewer key={index} goal={goal}/>
+                        }
+                    )}
+                </div>
             </div>
         </LoadingContext.Provider>
     </GoalsContext.Provider>;
