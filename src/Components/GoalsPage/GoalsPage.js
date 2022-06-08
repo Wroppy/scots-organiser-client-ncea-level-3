@@ -15,6 +15,15 @@ export default function GoalsPage() {
 
     const [goalFilter, setGoalFilter] = useState("");
 
+    const removeGoal = (goalID) => {
+        for (let i = 0; i < goals.length; i++) {
+            let goal = goals[i]
+            if (goal.goal_id === goalID) {
+                let newGoals = goals.splice(i, 1)
+                setGoals(newGoals);
+            }
+        }
+    }
 
     const filterGoal = (goal) => {
         if (goalFilter.length === 0) {
@@ -56,14 +65,14 @@ export default function GoalsPage() {
                         </div> :
                         <div className="goals-list-container">
                             {goals.filter(filterGoal).length === 0 ? <div
-                                    style={{flexGrow: 1, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                                style={{flexGrow: 1, display: "flex", justifyContent: "center", alignItems: "center"}}>
                                 {`You currently have no goals starting with "${goalFilter}"`}
-                                </div> : goals.filter(filterGoal).map((goal, index) => {
-                                            return <GoalViewer key={index} goal={goal}/>
-                                        })}
-                                </div>
-                            }
+                            </div> : goals.filter(filterGoal).map((goal, index) => {
+                                return <GoalViewer removeGoal={removeGoal} key={index} goal={goal}/>
+                            })}
                         </div>
-                    </LoadingContext.Provider>
-                    </GoalsContext.Provider>
                 }
+            </div>
+        </LoadingContext.Provider>
+    </GoalsContext.Provider>
+}
