@@ -5,12 +5,15 @@ import Loader from "../UserInfoForm/UserForm/LoadingAnimation/Loader";
 
 export default function LoadingButton(props) {
     let buttonText;
-    if (props.buttonText === undefined){
+    if (props.buttonText === undefined) {
         buttonText = "Submit";
-    }
-    else {
+    } else {
         buttonText = props.buttonText;
     }
+
+    try {
+        delete props.buttonText;
+    } catch {}
     let disabled = props.disabled
     return <Button {...props}>
         {buttonText} {disabled && <Loader/>}
