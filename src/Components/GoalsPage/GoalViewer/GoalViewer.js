@@ -9,6 +9,7 @@ export default function GoalViewer(props) {
     console.log(goal);
 
 
+
     return <><Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
             <div className="accordion-summary">
@@ -18,7 +19,6 @@ export default function GoalViewer(props) {
                 <span className="goal-completed-container">
                     {/* If it is completed, show the green check, otherwise, show red cross*/}
                     Completed: {goal.completed ? <Check sx={{color: green[500]}}/> : <Clear color="error"/>}
-
                 </span>
             </div>
         </AccordionSummary>

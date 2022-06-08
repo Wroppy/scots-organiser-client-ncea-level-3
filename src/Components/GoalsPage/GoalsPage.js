@@ -10,6 +10,18 @@ export const LoadingContext = createContext(true);
 export default function GoalsPage() {
     const [goals, setGoals] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const [goalFilter, setGoalFilter] = useState("");
+
+
+    const filterGoal = (goal) => {
+        if (goalFilter.length === 0) {
+            return true;
+        }
+        return goal.name.toLowerCase().startsWith(goalFilter.toLowerCase());
+
+    }
+
     useEffect(() => {
         (async () => {
             let token = localStorage.getItem("userAuthToken");
@@ -21,8 +33,7 @@ export default function GoalsPage() {
                     setIsLoading(false);
                 }
 
-            }
-            else{
+            } else {
                 console.log(response);
             }
         })();
@@ -32,9 +43,9 @@ export default function GoalsPage() {
     return <GoalsContext.Provider value={[goals, setGoals]}>
         <LoadingContext.Provider value={isLoading}>
             <div className="goals-page-container">
-                <GoalsPageHeader/>
+                <GoalsPageHeader filterState={[goalFilter, setGoalFilter]}/>
                 <div className="goals-list-container">
-                    {goals.map(
+                    {goals.filter(filterGoal).map(
                         (goal, index) => {
                             return <GoalViewer key={index} goal={goal}/>
                         }
@@ -42,5 +53,5 @@ export default function GoalsPage() {
                 </div>
             </div>
         </LoadingContext.Provider>
-    </GoalsContext.Provider>;
+    </GoalsContext.Provider>
 }
