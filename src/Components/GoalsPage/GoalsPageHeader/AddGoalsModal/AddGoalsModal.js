@@ -89,7 +89,8 @@ export default function AddGoalsModal() {
                         <span className="add-goals-error-text">
                             {formError}
                         </span>
-                        <LoadingButton className="add-goals-modal-button" variant="outlined" type="submit"
+                        <LoadingButton className="add-goals-modal-button"
+                                       buttonProps={{variant: "outlined", type: "submit", disabled: isFormFetching}}
                                        buttonText="Add Goal" disabled={isFormFetching}>
                         </LoadingButton>
                     </div>

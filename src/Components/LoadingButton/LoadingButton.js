@@ -11,11 +11,8 @@ export default function LoadingButton(props) {
         buttonText = props.buttonText;
     }
 
-    try {
-        delete props.buttonText;
-    } catch {}
     let disabled = props.disabled
-    return <Button {...props}>
+    return <Button {...props.buttonProps}>
         {buttonText} {disabled && <Loader/>}
     </Button>
 }
