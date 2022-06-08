@@ -8,13 +8,13 @@
   color: $text-primary;
 
   .modal-header{
-    background-color: $primary;
+    background-color: $background-dark;
     padding: 1rem;
     font-size: 1.25rem;
   }
 
   .modal-body{
-    background-color: $background-dark;
+    background-color: $background-primary;
     padding: 1rem;
     display: flex;
     justify-items: center;

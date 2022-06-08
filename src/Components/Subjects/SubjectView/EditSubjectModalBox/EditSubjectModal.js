@@ -164,7 +164,8 @@ export default function EditSubjectModal(props) {
                 <div className="colour-input-div form-field">
                     <label htmlFor="color-input">Edit background color: {backgroundColour}</label>
                     {/*Colour picker*/}
-                    <Button style={{backgroundColor: backgroundColour}} size="small" variant="contained" onClick={openColourPicker}>
+                    <Button style={{backgroundColor: backgroundColour}} size="small" variant="contained"
+                            onClick={openColourPicker}>
                         Edit Colour
                     </Button>
                     <Menu open={colourPickerOpen} onClose={closeColourPicker} anchorEl={anchorEl}>
@@ -181,8 +182,10 @@ export default function EditSubjectModal(props) {
                     <span>
                         {error}
                     </span>
-                    <LoadingButton type="submit" disabled={disabled} className="edit-subject-button" variant="outlined"
-                                   value="Save Subject"/>
+                    <LoadingButton
+                        buttonProps={{type: "submit", disabled: disabled, value: "Save Subject", variant: "outlined"}}
+                        disabled={disabled} className="edit-subject-button"
+                    />
                 </div>
             </form>
         </Modal>

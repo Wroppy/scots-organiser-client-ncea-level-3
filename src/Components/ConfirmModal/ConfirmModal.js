@@ -38,8 +38,9 @@ export default function ConfirmModal(props) {
                     {props.title}
                 </div>
                 <div className="modal-body">
-                    <LoadingButton onClick={onConfirm} buttonText={props.confirmText} disabled={disabled}/>
-                    <Button disabled={disabled} onClick={closeModal}>
+                    <LoadingButton disabled={disabled}
+                        buttonProps={{disabled: disabled, onClick: onConfirm, variant: "outlined"}} buttonText={props.confirmText}/>
+                    <Button disabled={disabled} onClick={closeModal} variant="outlined">
                         {props.rejectText}
                     </Button>
                 </div>
