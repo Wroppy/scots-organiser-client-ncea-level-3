@@ -5,10 +5,19 @@ import Tooltip from '@mui/material/Tooltip';
 import SetTimetableModal from "./SetTimetableModal/SetTimetableModal";
 import {useEffect, useState} from "react";
 import serverFetch from "../../Fetches";
+import {ToggleButton, ToggleButtonGroup} from "@mui/material";
 
 export default function TimetablePage(props) {
     const [timetable, setTimetable] = useState([]);
     const [subjectNames, getSubjectNames] = useState([]);
+    const [view, setView] = useState("grid");
+
+    const handleViewChange = (event, newView) => {
+        if (newView == undefined) {
+            return;
+        }
+        setView(newView);
+    }
 
     useEffect(() => {
         (async () => {
@@ -18,8 +27,6 @@ export default function TimetablePage(props) {
             // Gets the timetable and the subjects from the server
             let response = await serverFetch("/get-timetable", {}, {userAuthToken: token});
             let data = await response.json();
-            console.log(data);
-
             if (data.valid) {
                 // Sets the timetable and the subject names
                 setTimetable(data.timetable);
@@ -39,16 +46,18 @@ export default function TimetablePage(props) {
             </div>
             <div className="timetable-display-nav">
                 <span>Display:</span>
-                <Tooltip title="Grid View">
-                    <Button variant="outlined">
-                        <GridView/>
-                    </Button>
-                </Tooltip>
-                <Tooltip title="List View">
-                    <Button variant="outlined">
-                        <TableRows/>
-                    </Button>
-                </Tooltip>
+                <ToggleButtonGroup exclusive value={view} onChange={handleViewChange}>
+                    <ToggleButton value="grid">
+                        <Tooltip title="Grid View">
+                            <GridView/>
+                        </Tooltip>
+                    </ToggleButton>
+                    <ToggleButton value="list">
+                        <Tooltip title={`List View`}>
+                            <TableRows/>
+                        </Tooltip>
+                    </ToggleButton>
+                </ToggleButtonGroup>
             </div>
         </div>
     </div>
