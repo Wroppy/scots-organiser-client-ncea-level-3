@@ -9,7 +9,6 @@ import EditGoalModal from "./EditGoalModal/EditGoalModal";
 
 export default function GoalViewer(props) {
     let goal = props.goal;
-    console.log(goal);
     const deleteGoal = async (closeModal) => {
         // Deletes the goal
         let response = await serverFetch("/delete-goal", {goalID : goal.goal_id}, {userAuthToken: localStorage.getItem("userAuthToken")});

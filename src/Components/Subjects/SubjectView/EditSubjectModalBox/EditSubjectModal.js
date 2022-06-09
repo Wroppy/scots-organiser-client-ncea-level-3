@@ -10,7 +10,6 @@ import useStateWithDep from "../../../Hooks/UseStateWithDep";
 
 export default function EditSubjectModal(props) {
     const PREVIOUS_NAME = props.subject.subject_name;
-    console.log(PREVIOUS_NAME)
 
     const [open, setOpen] = useState(false);
 
@@ -43,7 +42,6 @@ export default function EditSubjectModal(props) {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log("Submitting");
 
         // subject name, teacher and room must be between 1 and 50 characters
         if (subjectName.length < 1 || subjectName.length > 50) {
@@ -90,7 +88,6 @@ export default function EditSubjectModal(props) {
 
         let data = await serverFetch("/edit-subject", body, {userAuthToken: token});
         let response = await data.json();
-        console.error(response);
         setDisabled(false);
         if (response.valid) {
             setOpen(false);
@@ -103,7 +100,6 @@ export default function EditSubjectModal(props) {
                 description,
                 background_colour: backgroundColour
             }
-            console.log(PREVIOUS_NAME, JSON.stringify(subject));
             editSubject(PREVIOUS_NAME, subject);
             return;
         }

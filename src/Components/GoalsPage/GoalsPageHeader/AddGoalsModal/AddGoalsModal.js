@@ -17,7 +17,6 @@ export default function AddGoalsModal() {
     const [isFormFetching, setIsFormFetching] = useState(false);
 
     const handleFormSubmit = async (e) => {
-        console.log("set goal")
         e.preventDefault();
         setIsFormFetching(true);
         let body = {
@@ -37,8 +36,6 @@ export default function AddGoalsModal() {
         let token = localStorage.getItem("userAuthToken");
         let response = await serverFetch("/add-goal", body, {userAuthToken: token});
         let data = await response.json();
-        console.log(data);
-
         if (data.valid) {
             let goal = {
                 goal_id: data.goalID,

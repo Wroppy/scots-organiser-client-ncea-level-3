@@ -8,7 +8,6 @@ import serverFetch from "../../../Fetches";
 
 export default function SubjectView(props) {
     let subject = props.subject;
-    console.log(JSON.stringify(subject));
 
     let deleteSubject = async (closeModal) => {
         // Deletes the subject
