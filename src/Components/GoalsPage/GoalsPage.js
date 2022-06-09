@@ -26,10 +26,8 @@ export default function GoalsPage() {
             }
         }
 
-        console.log(i);
         let newGoals = [...goals];
         newGoals[i] = goalData;
-        console.log(newGoals)
         setGoals(newGoals);
     }
     const removeGoal = (goalID) => {

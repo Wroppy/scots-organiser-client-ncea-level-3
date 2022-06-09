@@ -62,6 +62,7 @@ export default function EditGoalModal(props) {
                 completed: goalCompleted,
                 description
             })
+            handleClose()
             return;
         }
         setFormError(data.error);
