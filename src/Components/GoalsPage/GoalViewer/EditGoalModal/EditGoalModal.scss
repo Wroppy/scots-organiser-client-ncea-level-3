@@ -1,0 +1,70 @@
+@import "./../../../Colours/Dark/main";
+
+.edit-goal-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $text-primary;
+
+  .edit-goal-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    width: 100%;
+
+    .edit-goal-header {
+      background-color: $background-dark;
+
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .edit-goal-body {
+      background-color: $background-primary;
+      padding: 0.5rem;
+
+      & > {
+        div {
+          margin: 0.5rem 0;
+        }
+      }
+
+      .change-goal-completed {
+        display: flex;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        align-items: center;
+
+        label {
+          box-sizing: border-box;
+          flex-grow: 1;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          padding: 14px;
+          margin: 0 !important;
+        }
+
+        input {
+          box-sizing: border-box !important;
+        }
+      }
+    }
+
+    .edit-goal-footer {
+      background-color: $background-dark;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .edit-goal-button {
+        margin-left: 0.5rem;
+      }
+
+      span {
+        color: $error-primary;
+      }
+    }
+  }
+}

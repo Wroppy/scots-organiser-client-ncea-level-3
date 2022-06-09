@@ -125,7 +125,8 @@ export default function AddSubjectModal(props) {
 
 
     return <>
-        <Button disabled={disableAddButton} className="subject-add-button" variant="outlined" onClick={e => setOpen(true)}>
+        <Button disabled={disableAddButton} className="subject-add-button" variant="outlined"
+                onClick={e => setOpen(true)}>
             <Add/>
         </Button>
 
@@ -175,8 +176,10 @@ export default function AddSubjectModal(props) {
                                 onClick={clearFields}>
                             Clear Fields
                         </Button>
-                        <LoadingButton type="submit" disabled={disabled} className="add-subject-button"
-                                       variant="outlined">Add
+                        <LoadingButton buttonProps={{type: "submit", variant: "outlined", disabled: disabled}}
+                                       disabled={disabled}
+                                       className="add-subject-button"
+                        >Add
                             Subject</LoadingButton>
                     </div>
                 </div>
