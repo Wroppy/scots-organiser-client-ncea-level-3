@@ -15,11 +15,29 @@ export default function GoalsPage() {
 
     const [goalFilter, setGoalFilter] = useState("");
 
+    const editGoal = (goalData) => {
+        let goalID = goalData.goal_id;
+        // Gets the goal
+        let i;
+        for (i = 0; i < goals.length; i++) {
+            let goal = goals[i];
+            if (goal.goal_id === goalID) {
+                break
+            }
+        }
+
+        console.log(i);
+        let newGoals = [...goals];
+        newGoals[i] = goalData;
+        console.log(newGoals)
+        setGoals(newGoals);
+    }
     const removeGoal = (goalID) => {
         for (let i = 0; i < goals.length; i++) {
             let goal = goals[i]
             if (goal.goal_id === goalID) {
-                let newGoals = goals.splice(i, 1)
+                let newGoals = [...goals];
+                newGoals.splice(i, 1)
                 setGoals(newGoals);
             }
         }
@@ -68,7 +86,7 @@ export default function GoalsPage() {
                                 style={{flexGrow: 1, display: "flex", justifyContent: "center", alignItems: "center"}}>
                                 {`You currently have no goals starting with "${goalFilter}"`}
                             </div> : goals.filter(filterGoal).map((goal, index) => {
-                                return <GoalViewer removeGoal={removeGoal} key={index} goal={goal}/>
+                                return <GoalViewer editGoal={editGoal} removeGoal={removeGoal} key={index} goal={goal}/>
                             })}
                         </div>
                 }

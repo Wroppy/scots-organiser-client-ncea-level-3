@@ -22,15 +22,6 @@ export default function EditSubjectModal(props) {
     const [error, setError] = useState("");
     const [disabled, setDisabled] = useState(false);
 
-    useEffect(() => {
-        console.log(subjectName)
-        console.log(teacherName)
-        console.log(room)
-        console.log(description)
-
-    }, [open]);
-
-
     const [subjectNameError, setSubjectNameError] = useState("");
     const [teacherNameError, setTeacherNameError] = useState("");
     const [roomError, setRoomError] = useState("");

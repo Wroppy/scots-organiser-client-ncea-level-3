@@ -5,11 +5,11 @@ import {Check, Clear} from "@mui/icons-material";
 import {green} from "@mui/material/colors";
 import ConfirmModal from "../../ConfirmModal/ConfirmModal";
 import serverFetch from "../../../Fetches";
+import EditGoalModal from "./EditGoalModal/EditGoalModal";
 
 export default function GoalViewer(props) {
     let goal = props.goal;
     console.log(goal);
-
     const deleteGoal = async (closeModal) => {
         // Deletes the goal
         let response = await serverFetch("/delete-goal", {goalID : goal.goal_id}, {userAuthToken: localStorage.getItem("userAuthToken")});
@@ -19,7 +19,6 @@ export default function GoalViewer(props) {
             props.removeGoal(goal.goal_id);
         }
     }
-
 
     return <><Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
@@ -45,8 +44,8 @@ export default function GoalViewer(props) {
                 <ConfirmModal onConfirm={deleteGoal} title="Are You Sure You Want To Delete?"
                               buttonProps={{variant: "outlined", size: "small"}} confirmText="Yes" rejectText="No"
                               openModalText="Delete"/>
+                <EditGoalModal editGoal={props.editGoal} goal={props.goal}/>
 
-                {/*<EditSubjectModal editSubject={props.editSubject} subject={props.subject}/>*/}
 
             </div>
         </AccordionDetails>
