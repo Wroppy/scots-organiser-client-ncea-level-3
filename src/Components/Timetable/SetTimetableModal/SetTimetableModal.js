@@ -96,6 +96,7 @@ export default function SetTimetableModal(props) {
 
     const submitForm = async () => {
         setIsLoading(true);
+        setDisableNextButton(true);
 
         // Gets the jwt auth token from the local storage
         const token = localStorage.getItem("userAuthToken");
@@ -107,7 +108,8 @@ export default function SetTimetableModal(props) {
 
         let response = await serverFetch("/set-timetable", body, {userAuthToken: token});
         let data = await response.json();
-
+        setDisableNextButton(false);
+        setIsLoading(false);
         if (data.valid) {
             onClose();
 
@@ -124,7 +126,6 @@ export default function SetTimetableModal(props) {
         // If the current step is the last step, then submit the form
         if (currentStep === maxSteps - 1) {
             submitForm();
-            setIsLoading(false);
             return;
         }
 
@@ -222,8 +223,8 @@ export default function SetTimetableModal(props) {
                                    backButton={<Button disabled={(currentStep === 0) || isLoading}
                                                        onClick={handleBack}><KeyboardArrowLeft/>Back</Button>}
                                    nextButton={<DisableLoadingButton disabled={disableNextButton || isLoading}
-                                                                     showForwardArrow={true}
-                                                                     onClick={handleNext} loading={isLoading}
+                                                                     showForwardArrow={true} onClick={handleNext}
+                                                                     loading={isLoading}
                                                                      buttonText={(currentStep === (maxSteps - 1)) ? "Submit" : "Next"}/>}>
                         {steps.map((step, index) => {
                                 return <Step key={index}>
