@@ -6,6 +6,7 @@ import SetTimetableModal from "./SetTimetableModal/SetTimetableModal";
 import {useEffect, useState} from "react";
 import serverFetch from "../../Fetches";
 import {ToggleButton, ToggleButtonGroup} from "@mui/material";
+import TimetableListView from "./TimetableViews/TimetableListView/TimetableListView";
 
 export default function TimetablePage(props) {
     const [timetable, setTimetable] = useState([]);
@@ -29,6 +30,7 @@ export default function TimetablePage(props) {
             let data = await response.json();
             if (data.valid) {
                 // Sets the timetable and the subject names
+                console.log(data.subjects)
                 setTimetable(data.timetable);
                 getSubjectNames(data.subjects);
             } else {
@@ -44,21 +46,22 @@ export default function TimetablePage(props) {
             <div className="timetable-create-nav">
                 <SetTimetableModal disabled={pageLoading} subjectNames={subjectNames}/>
             </div>
-            <div className="timetable-display-nav">
-                <span>Display:</span>
-                <ToggleButtonGroup exclusive value={view} onChange={handleViewChange}>
-                    <ToggleButton value="grid">
-                        <Tooltip title="Grid View">
-                            <GridView/>
-                        </Tooltip>
-                    </ToggleButton>
-                    <ToggleButton value="list">
-                        <Tooltip title={`List View`}>
-                            <TableRows/>
-                        </Tooltip>
-                    </ToggleButton>
-                </ToggleButtonGroup>
-            </div>
+            {/*<div className="timetable-display-nav">*/}
+            {/*    <span>Display:</span>*/}
+            {/*    <ToggleButtonGroup exclusive value={view} onChange={handleViewChange}>*/}
+            {/*        <ToggleButton value="grid">*/}
+            {/*            <Tooltip title="Grid View">*/}
+            {/*                <GridView/>*/}
+            {/*            </Tooltip>*/}
+            {/*        </ToggleButton>*/}
+            {/*        <ToggleButton value="list">*/}
+            {/*            <Tooltip title={`List View`}>*/}
+            {/*                <TableRows/>*/}
+            {/*            </Tooltip>*/}
+            {/*        </ToggleButton>*/}
+            {/*    </ToggleButtonGroup>*/}
+            {/*</div>*/}
         </div>
+        <TimetableListView/>
     </div>
 }
