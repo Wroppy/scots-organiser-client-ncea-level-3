@@ -9,9 +9,11 @@
   background-color: $background-dark;
   margin-top: 1.5rem;
 
+
   .timetable-week-nav {
     background-color: rgba(0, 0, 0, 0.1);
     display: flex;
+    position: relative;
     align-items: center;
 
     .timetable-week-heading {
@@ -22,6 +24,7 @@
 
   .timetable-day-nav {
     display: flex;
+    position: relative;
     align-items: center;
 
     .timetable-day-heading {
@@ -30,5 +33,18 @@
     }
   }
 
+  //.overflow-wrapper {
+  //  flex-grow: 1;
+  //  height: 70vh;
 
+    .timetable-week-container {
+      height: 100%;
+      .timetable-class-display {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+      }
+    }
+  //}
 }

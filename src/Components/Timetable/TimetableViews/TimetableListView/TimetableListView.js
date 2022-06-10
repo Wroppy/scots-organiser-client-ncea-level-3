@@ -55,29 +55,24 @@ export default function TimetableListView(props) {
         // if week = 0, then newValue = 1
         if (weekIndex === 0) {
             setWeekIndex(1);
-        }
-        else {
+        } else {
             setWeekIndex(0);
         }
     }
-
     const increaseDay = (e) => {
         if (dayIndex === 4) {
             setDayIndex(0);
-        }
-        else {
+        } else {
             setDayIndex(dayIndex + 1);
         }
     }
     const decreaseDay = (e) => {
         if (dayIndex === 0) {
             setDayIndex(4);
-        }
-        else {
+        } else {
             setDayIndex(dayIndex - 1);
         }
     }
-
 
     return <div className="timetable-list-view">
         <div className="timetable-week-nav">
@@ -85,7 +80,7 @@ export default function TimetableListView(props) {
                 <KeyboardArrowLeft/>
             </Button>
             <div className="timetable-week-heading">
-                {weekIndex === 0  ? "Week A" : "Week B"}
+                {weekIndex === 0 ? "Week A" : "Week B"}
             </div>
             <Button onClick={changeWeek}>
                 <KeyboardArrowRight/>
@@ -101,6 +96,22 @@ export default function TimetableListView(props) {
             <Button onClick={increaseDay}>
                 <KeyboardArrowRight/>
             </Button>
+        </div>
+        <div className="overflow-wrapper">
+            <div className="timetable-week-container">
+                {props.timetable[weekIndex][dayIndex].map((subject, index) => {
+                    console.log(subject);
+                    return <div key={index} className="timetable-class-display"
+                                style={subject.subjectName.length !== 0 ? {backgroundColor: props.subjectData[subject.subjectName].background_colour} : {}}>
+                        <div className="timetable-class-display-heading">
+                            {subject.subjectName.length === 0 ? `${subject.title}` : `${subject.subjectName} - ${props.subjectData[subject.subjectName].room}`}
+                        </div>
+                        <div className="timetable-class-display-time">
+                            {`${subject.startTime} - ${subject.endTime}`}
+                        </div>
+                    </div>
+                })}
+            </div>
         </div>
     </div>
 }
