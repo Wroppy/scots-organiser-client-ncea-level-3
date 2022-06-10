@@ -108,18 +108,23 @@ export default function SetTimetableModal(props) {
 
         let response = await serverFetch("/set-timetable", body, {userAuthToken: token});
         let data = await response.json();
-        setDisableNextButton(false);
-        setIsLoading(false);
+
         if (data.valid) {
             onClose();
 
             // Clears the modal of any subjects
             clearTimetableModal()
-            return;
-        }
 
-        // Displays an error message if the server returns an error
-        alert(data.errorMessage);
+        } else {
+
+            // Displays an error message if the server returns an error
+            alert(data.errorMessage);
+        }
+        setDisableNextButton(false);
+        setIsLoading(false);
+
+        // Gets the new timetable
+        props.displayTimetable();
     }
 
     const handleNext = () => {
@@ -137,9 +142,7 @@ export default function SetTimetableModal(props) {
     }
 
     return <>
-        <Tooltip title="Set Timetable">
-            <Button disabled={disabled} variant="outlined" onClick={openModal}><Add/></Button>
-        </Tooltip>
+        <Button disabled={disabled} variant="outlined" onClick={openModal}><Add/></Button>
         <Modal className="set-timetable-modal" open={open} onClose={onClose}>
             <div className="timetable-modal-content">
                 <div className="set-timetable-modal-header">
