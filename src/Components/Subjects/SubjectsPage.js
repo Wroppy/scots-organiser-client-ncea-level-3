@@ -55,7 +55,6 @@ function SubjectsPage(props) {
     }
 
     const removeSubject = (subjectName) => {
-        console.log("removing subject")
         for (let i = 0; i < subjects.length; i++) {
             if (subjects[i].subject_name === subjectName) {
                 let newSubjects = [...subjects];
@@ -81,9 +80,7 @@ function SubjectsPage(props) {
         let token = localStorage.getItem("userAuthToken");
         let response = await serverFetch("/get-subjects", {}, {userAuthToken: token});
         let data = await response.json();
-        console.error(data);
         if (!data.valid) {
-            console.error("Error getting subjects");
             return;
         }
         setSubjects(data.subjects);

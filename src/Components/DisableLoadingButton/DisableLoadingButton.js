@@ -12,14 +12,12 @@ export default function DisableLoadingButton(props) {
     else {
         buttonText = props.buttonText;
     }
-    let loading = props.loading;
 
     let buttonProps = {...props}
     delete buttonProps.loading;
     delete buttonProps.buttonText;
     delete buttonProps.showForwardArrow;
-
     return <Button {...buttonProps}>
-        {buttonText} {loading && <Loader/>} {props.showForwardArrow && <KeyboardArrowRight/>}
+        {buttonText} {props.loading && <Loader/>} {props.showForwardArrow && <KeyboardArrowRight/>}
     </Button>
 }

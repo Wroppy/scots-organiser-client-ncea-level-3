@@ -3,7 +3,7 @@ const urlPrefixes = [
     "https://sc-organisation.herokuapp.com"
 ];
 
-const urlPrefix = urlPrefixes[1];
+const urlPrefix = urlPrefixes[0];
 
 async function serverFetch(path, body, headers) {
     // Sends a post request to the server

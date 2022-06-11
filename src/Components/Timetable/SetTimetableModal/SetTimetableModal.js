@@ -96,6 +96,7 @@ export default function SetTimetableModal(props) {
 
     const submitForm = async () => {
         setIsLoading(true);
+        setDisableNextButton(true);
 
         // Gets the jwt auth token from the local storage
         const token = localStorage.getItem("userAuthToken");
@@ -113,18 +114,23 @@ export default function SetTimetableModal(props) {
 
             // Clears the modal of any subjects
             clearTimetableModal()
-            return;
-        }
 
-        // Displays an error message if the server returns an error
-        alert(data.errorMessage);
+        } else {
+
+            // Displays an error message if the server returns an error
+            alert(data.errorMessage);
+        }
+        setDisableNextButton(false);
+        setIsLoading(false);
+
+        // Gets the new timetable
+        props.displayTimetable();
     }
 
     const handleNext = () => {
         // If the current step is the last step, then submit the form
         if (currentStep === maxSteps - 1) {
             submitForm();
-            setIsLoading(false);
             return;
         }
 
@@ -136,9 +142,7 @@ export default function SetTimetableModal(props) {
     }
 
     return <>
-        <Tooltip title="Set Timetable">
-            <Button disabled={disabled} variant="outlined" onClick={openModal}><Add/></Button>
-        </Tooltip>
+        <Button disabled={disabled} variant="outlined" onClick={openModal}><Add/></Button>
         <Modal className="set-timetable-modal" open={open} onClose={onClose}>
             <div className="timetable-modal-content">
                 <div className="set-timetable-modal-header">
@@ -222,8 +226,8 @@ export default function SetTimetableModal(props) {
                                    backButton={<Button disabled={(currentStep === 0) || isLoading}
                                                        onClick={handleBack}><KeyboardArrowLeft/>Back</Button>}
                                    nextButton={<DisableLoadingButton disabled={disableNextButton || isLoading}
-                                                                     showForwardArrow={true}
-                                                                     onClick={handleNext} loading={isLoading}
+                                                                     showForwardArrow={true} onClick={handleNext}
+                                                                     loading={isLoading}
                                                                      buttonText={(currentStep === (maxSteps - 1)) ? "Submit" : "Next"}/>}>
                         {steps.map((step, index) => {
                                 return <Step key={index}>
