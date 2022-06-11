@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import React, {useState} from "react";
-import {FormControlLabel, Modal, Switch, TextField} from "@mui/material";
+import {FormControlLabel, Modal, Switch, TextField, Typography} from "@mui/material";
 import LoadingButton from "../../../LoadingButton/LoadingButton";
 import "./EditGoalModal.scss";
 import useStateWithDep from "../../../Hooks/UseStateWithDep";
@@ -98,7 +98,9 @@ export default function EditGoalModal(props) {
                 <div className="edit-goal-footer">
                     <div>
                         <span className="edit-goal-error">
-                            {formError}
+                            <Typography variant="error">
+                                {formError}
+                            </Typography>
                         </span>
                     </div>
                     <div>

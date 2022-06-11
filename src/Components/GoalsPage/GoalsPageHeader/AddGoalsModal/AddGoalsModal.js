@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 import {Add} from "@mui/icons-material";
 import "./AddGoalsModal.scss";
 import {useState, useContext} from "react";
-import {Modal, TextField} from "@mui/material";
+import {Modal, TextField, Typography} from "@mui/material";
 import LoadingButton from "../../../LoadingButton/LoadingButton";
 import {GoalsContext, LoadingContext} from "../../GoalsPage";
 import serverFetch from "../../../../Fetches";
@@ -99,7 +99,7 @@ export default function AddGoalsModal() {
                     </div>
                     <div className="add-goals-modal-footer">
                         <span className="add-goals-error-text">
-                            {formError}
+                            <Typography variant="error"> {formError} </Typography>
                         </span>
                         <LoadingButton className="add-goals-modal-button"
                                        buttonProps={{variant: "outlined", type: "submit", disabled: isFormFetching}}

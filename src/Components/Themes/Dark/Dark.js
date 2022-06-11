@@ -31,6 +31,11 @@ const themeOptions = {
             paper: '#1c1c1c',
             contrastText: '#fff'
         },
+    },
+    typography: {
+        error:{
+            color: '#ff0004',
+        }
     }
 };
 

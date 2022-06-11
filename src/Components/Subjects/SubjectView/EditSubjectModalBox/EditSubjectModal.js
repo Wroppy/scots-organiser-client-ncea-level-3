@@ -1,5 +1,5 @@
 import "./EditSubjectModal.scss";
-import {Menu, Modal, TextField} from "@mui/material";
+import {Menu, Modal, TextField, Typography} from "@mui/material";
 import Button from "@mui/material/Button";
 import React, {useEffect, useRef, useState} from "react";
 import serverFetch from "../../../../Fetches";
@@ -166,9 +166,9 @@ export default function EditSubjectModal(props) {
                            multiline={true} disabled={disabled} error={descriptionError > 0}
                            helperText={descriptionError}/>
                 <div className="form-footer">
-                    <span>
+                    <Typography variant="error">
                         {error}
-                    </span>
+                    </Typography>
                     <LoadingButton
                         buttonProps={{type: "submit", disabled: disabled, value: "Save Subject", variant: "outlined"}}
                         disabled={disabled} className="edit-subject-button"

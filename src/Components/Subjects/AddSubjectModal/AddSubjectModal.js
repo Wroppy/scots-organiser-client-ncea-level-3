@@ -1,5 +1,5 @@
 import "./AddSubjectModal.scss";
-import {Menu, Modal, TextField} from "@mui/material";
+import {Menu, Modal, TextField, Typography} from "@mui/material";
 import Button from "@mui/material/Button";
 import Add from "@mui/icons-material/Add";
 import React, {useRef, useState} from "react";
@@ -169,7 +169,9 @@ export default function AddSubjectModal(props) {
                            helperText={descriptionError}/>
                 <div className="form-footer">
                     <span>
-                        {error}
+                        <Typography variant="error">
+                            {error}
+                        </Typography>
                     </span>
                     <div>
                         <Button disabled={disabled} className="clear-fields-button" variant="outlined"
