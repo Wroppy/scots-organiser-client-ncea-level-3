@@ -21,6 +21,10 @@ $breakpoint-small: 800px;
 .accordion-footer{
   display: flex;
   justify-content: end;
+  align-items: center;
+  span{
+    margin-right: 0.2rem;
+  }
 
   button + button{
     margin-left: 0.5rem;

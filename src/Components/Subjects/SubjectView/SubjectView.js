@@ -1,4 +1,4 @@
-import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
+import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "./SubjectView.scss";
 import EditSubjectModal from "./EditSubjectModalBox/EditSubjectModal";
@@ -48,7 +48,9 @@ export default function SubjectView(props) {
                 {subject.description.length === 0 ? "There is no description for this subject" : subject.description}
             </div>
             <div className="accordion-footer">
-
+                <Typography variant="error">
+                    Deleting may change timetable!
+                </Typography>
                 <ConfirmModal onConfirm={deleteSubject} title="Are You Sure You Want To Delete?"
                               buttonProps={{variant: "outlined", size: "small"}} confirmText="Yes" rejectText="No"
                               openModalText="Delete"/>
