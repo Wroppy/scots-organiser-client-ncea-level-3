@@ -16,7 +16,6 @@ export default function Contact(props) {
         let token = localStorage.getItem("userAuthToken");
         let response = await serverFetch("/send-email", {name, message}, {userAuthToken: token})
         let data = await response.json();
-        console.log(data);
         setLoading(false)
 
         if (!data.response){

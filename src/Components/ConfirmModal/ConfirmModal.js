@@ -19,12 +19,13 @@ export default function ConfirmModal(props) {
         setOpen(false)
     };
 
-    const onConfirm = () => {
+    const onConfirm = async () => {
         if (disabled) {
             return;
         }
+        // Disables the modal when the function is running
         setDisabled(true);
-        props.onConfirm(closeModal);
+        await props.onConfirm(closeModal);
         setDisabled(false);
     }
 
