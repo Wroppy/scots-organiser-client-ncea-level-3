@@ -1,0 +1,44 @@
+@import "./../Colours/Dark/main";
+
+.contact-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  padding: 1.5rem;
+  //justify-content: center;
+
+
+  .contact-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .contact-form-header{
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-form-text-body{
+      padding: 0.7rem 1rem;
+    }
+
+    .contact-form-text-fields{
+      padding: 0.7rem 1rem;
+      flex-grow: 1;
+
+      &>div + div{
+        margin-top: 1rem;
+      }
+      .form-button{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+
+  }
+
+}

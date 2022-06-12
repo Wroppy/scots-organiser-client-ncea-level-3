@@ -11,6 +11,7 @@ import SubjectsPage from "./Components/Subjects/SubjectsPage";
 import GoalsPage from "./Components/GoalsPage/GoalsPage";
 import TimetablePage from "./Components/Timetable/TimetablePage";
 import TestingTemplate from "./Components/Template/TestingTemplate";
+import Contact from "./Components/Contact/Contact";
 
 // Importing the theme and the custom styles
 import {ThemeProvider, createTheme} from "@mui/material/styles";
@@ -34,9 +35,11 @@ function App() {
                 <Route path="*" element={<ErrorPage/>}/>
                 <Route path="goals" element={<GoalsPage/>}/>
                 <Route path="timetable" element={<TimetablePage/>}/>
+                <Route path="contact" element={<Contact/>}/>
             </Route>
         </Routes>
-    </BrowserRouter></ThemeProvider>
+    </BrowserRouter>
+    </ThemeProvider>
 }
 
 export default App;

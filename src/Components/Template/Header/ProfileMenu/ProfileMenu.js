@@ -27,8 +27,8 @@ export default function ProfileMenu(props) {
     <Menu anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
               transformOrigin={{ vertical: "top", horizontal: "center" }} anchorEl={anchorEl} open={open}
           onClose={closeMenu}>
-        <MenuItem component={Link} href="/settings" onClick={closeMenu}>
-            Settings
+        <MenuItem component={Link} href="/contact" onClick={closeMenu}>
+            Contact Me
         </MenuItem>
         <MenuItem className="log-out-button" onClick={signOut}>
             Log Out

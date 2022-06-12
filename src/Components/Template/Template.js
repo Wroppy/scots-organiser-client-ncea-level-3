@@ -23,7 +23,8 @@ const NAVBAR_URLS = [
     "/timetable",
     "/subjects",
     "/goals",
-    "/"
+    "/",
+    "/contact"
 ];
 
 function Template(props) {
