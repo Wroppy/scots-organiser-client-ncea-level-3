@@ -27,15 +27,15 @@ export default function Contact(props) {
             // Clears the form
             setName("");
             setMessage("");
+
+            // Tells the user that the form was submitted
+            alert("Form has been submitted.")
         }
 
     }
 
     return <div className="contact-page-container">
         <form className="contact-form" onSubmit={formSubmit}>
-            <div className="contact-form-header">
-                Contact Me:
-            </div>
             <div className="contact-form-text-body">
                 Contact me by simply typing in your name into the name field, and your message into the message field
             </div>
@@ -46,7 +46,7 @@ export default function Contact(props) {
                 <TextField required multiline rows={5} fullWidth autoComplete="off" label="Message" value={message}
                            onChange={(e) => {
                                setMessage(e.currentTarget.value)
-                           }} inputProps={{maxLength: 500}}/>
+                           }} inputProps={{maxLength: 2000}}/>
 
                 <div className="form-button">
                     <Typography variant="error">
