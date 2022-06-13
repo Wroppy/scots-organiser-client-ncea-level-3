@@ -17,6 +17,7 @@ import Contact from "./Components/Contact/Contact";
 import {ThemeProvider, createTheme} from "@mui/material/styles";
 import themeOptions from "./Components/Themes/Dark/Dark";
 import './App.scss';
+import TasksPage from "./Components/Tasks/TasksPage";
 
 const theme = createTheme(themeOptions);
 
@@ -36,6 +37,7 @@ function App() {
                 <Route path="goals" element={<GoalsPage/>}/>
                 <Route path="timetable" element={<TimetablePage/>}/>
                 <Route path="contact" element={<Contact/>}/>
+                <Route path="tasks" element={<TasksPage/>}/>
             </Route>
         </Routes>
     </BrowserRouter>

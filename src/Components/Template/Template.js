@@ -13,7 +13,7 @@ const URLS = [
     {"text": "Dashboard", url: "", icon: "home"},
     {"text": "Timetable", url: "/timetable", icon: "calendar"},
     {"text": "Subjects", url: "/subjects", icon: "books"},
-    {"text": "Tasks", url: "", icon: "tasks"},
+    {"text": "Tasks", url: "/tasks", icon: "tasks"},
     {"text": "Assignments", url: "", icon: "assignments"},
     {"text": "Goals", url: "/goals", icon: "goals"},
 ];
@@ -24,7 +24,8 @@ const NAVBAR_URLS = [
     "/subjects",
     "/goals",
     "/",
-    "/contact"
+    "/contact",
+    "/tasks"
 ];
 
 function Template(props) {
